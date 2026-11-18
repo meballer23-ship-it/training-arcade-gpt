@@ -1,0 +1,2102 @@
+{
+  "schema": 1,
+  "id": "customer-service-fundamentals",
+  "title": "Customer Service Arcade",
+  "version": "1.1.0",
+  "forgedAt": "2026-10-30",
+  "sources": [],
+  "modules": [
+    {
+      "id": "empathy-acknowledgment",
+      "title": "Empathy & Acknowledgment",
+      "order": 1,
+      "intro": "Before you fix anything, the person on the other end needs to feel heard. This world covers acknowledging impact, restating the problem, plain language, and apologizing without blame: the habits that make every later step of a call easier.",
+      "boss": "The Caller Nobody Heard"
+    },
+    {
+      "id": "de-escalation",
+      "title": "De-escalation",
+      "order": 2,
+      "intro": "Some calls start hot. This world builds on acknowledgment with the full de-escalation flow: letting people vent, keeping your voice steady, promising update times you can keep, setting respectful boundaries, and handing off well when someone asks for your lead.",
+      "boss": "The Month-End Meltdown"
+    },
+    {
+      "id": "ticket-handling",
+      "title": "Ticket Handling & Follow-Through",
+      "order": 3,
+      "intro": "A calm call still fails if the ticket stalls. This world covers triage by impact and urgency, deciding when to handle, escalate or schedule, keeping customers updated even when there's no news, and closing the loop so the fix actually sticks.",
+      "boss": "The Monday Morning Queue"
+    }
+  ],
+  "atoms": [
+    {
+      "id": "acknowledge-before-solving",
+      "module": "empathy-acknowledgment",
+      "type": "term",
+      "difficulty": 1,
+      "criticality": 3,
+      "teach": {
+        "card": "When a caller is frustrated, name what's happening to them before you start troubleshooting. One line like \"Losing a morning of work to this is rough\" tells them you get it. Then move to the fix.",
+        "why": "People who don't feel heard keep repeating themselves and push back on every step, so skipping that first line makes the fix take longer, not shorter."
+      },
+      "prompt": "A caller is frustrated. What should you do FIRST?",
+      "answer": "Acknowledge how it's affecting them",
+      "distractors": [
+        {
+          "text": "Start troubleshooting right away",
+          "misconceptionId": "fix-first-myth"
+        },
+        {
+          "text": "Ask for their ticket number",
+          "misconceptionId": null
+        },
+        {
+          "text": "Explain what usually causes this",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["empathy", "phone"],
+      "source": "GENERATED",
+      "hash": "48be69daa571"
+    },
+    {
+      "id": "restate-in-own-words",
+      "module": "empathy-acknowledgment",
+      "type": "term",
+      "difficulty": 2,
+      "criticality": 2,
+      "teach": {
+        "card": "After the caller explains, restate the problem in your own words: \"So since this morning, Outlook opens but no new mail arrives, right?\" It takes ten seconds. If you've got it wrong, they'll tell you now instead of after you've fixed the wrong thing.",
+        "why": "Restating gives the caller a chance to catch a misunderstanding before you act on it, and it signals you were listening rather than waiting for your turn to talk."
+      },
+      "prompt": "What does restating the problem in your own words do?",
+      "answer": "Confirms you understood before you act",
+      "distractors": [
+        {
+          "text": "Shows you know the right technical terms",
+          "misconceptionId": "jargon-credibility-myth"
+        },
+        {
+          "text": "Buys you time to think of a fix",
+          "misconceptionId": null
+        },
+        {
+          "text": "Gives you exact wording for the ticket",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["listening", "phone"],
+      "source": "GENERATED",
+      "hash": "06434119ab39"
+    },
+    {
+      "id": "plain-language",
+      "module": "empathy-acknowledgment",
+      "type": "term",
+      "difficulty": 2,
+      "criticality": 2,
+      "teach": {
+        "card": "Explain causes and fixes in words the caller already uses. Say \"the saved password on the scanner expired\" instead of \"SMB auth on the MFP profile failed.\" If a technical term is unavoidable, explain it in the same breath.",
+        "why": "Jargon leaves non-technical callers lost or feeling talked down to, so they stop asking questions and the problem comes back in a form a plain explanation would have prevented."
+      },
+      "prompt": "A user asks why her laptop is so slow. Which explanation fits best?",
+      "answer": "\"It's low on memory with all those tabs open\"",
+      "distractors": [
+        {
+          "text": "\"RAM is saturated by browser processes\"",
+          "misconceptionId": "jargon-credibility-myth"
+        },
+        {
+          "text": "\"Laptops just get slow as they get older\"",
+          "misconceptionId": null
+        },
+        {
+          "text": "\"You have way too many tabs open\"",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["language"],
+      "source": "GENERATED",
+      "hash": "a41a72a0efbc"
+    },
+    {
+      "id": "apology-without-blame",
+      "module": "empathy-acknowledgment",
+      "type": "term",
+      "difficulty": 2,
+      "criticality": 2,
+      "teach": {
+        "card": "You can apologize for the experience without admitting fault: \"I'm sorry this has eaten your morning.\" It doesn't claim anything about the cause. Save statements about cause for when you actually know it.",
+        "why": "An apology for how the problem feels is honest before the cause is known, while denying or accepting fault early can turn out wrong and cost trust either way."
+      },
+      "prompt": "The cause isn't known yet. Which apology fits?",
+      "answer": "\"I'm sorry this has cost you your morning\"",
+      "distractors": [
+        {
+          "text": "\"I can't apologize until we know the cause\"",
+          "misconceptionId": "apology-fault-myth"
+        },
+        {
+          "text": "\"Sorry, but this isn't something we caused\"",
+          "misconceptionId": null
+        },
+        {
+          "text": "\"I apologize, our system clearly failed you\"",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["empathy", "language"],
+      "source": "GENERATED",
+      "hash": "5acc7ec1812f"
+    },
+    {
+      "id": "narrate-dead-air",
+      "module": "empathy-acknowledgment",
+      "type": "term",
+      "difficulty": 1,
+      "criticality": 1,
+      "teach": {
+        "card": "If you need a minute to look something up, say what you're doing: \"I'm pulling up your mailbox settings, give me about thirty seconds.\" If it will take more than a minute or two, ask before placing them on hold.",
+        "why": "Unexplained silence sounds like you've stopped working or don't know what to do, and anxious callers fill it with worry or repeated questions."
+      },
+      "prompt": "You need 30 seconds to check something. What do you do?",
+      "answer": "Tell them what you're checking and why",
+      "distractors": [
+        {
+          "text": "Stay quiet so you can concentrate",
+          "misconceptionId": "dead-air-myth"
+        },
+        {
+          "text": "Put them on hold without explaining",
+          "misconceptionId": null
+        },
+        {
+          "text": "Ask them to call back in five minutes",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["phone"],
+      "source": "GENERATED",
+      "hash": "c41c5b9bece7"
+    },
+    {
+      "id": "can-do-first",
+      "module": "empathy-acknowledgment",
+      "type": "term",
+      "difficulty": 3,
+      "criticality": 3,
+      "teach": {
+        "card": "When you can't do exactly what someone asked, open with what you can do: \"I can't install that on your personal laptop, but I can get you web access today.\" Mention the rule only if they ask why. Options first, policy second.",
+        "why": "A reply that opens with the rule sounds like a closed door, so the caller argues with it instead of hearing the option that would actually solve their problem."
+      },
+      "prompt": "You can't do what a user asked. What should your reply lead with?",
+      "answer": "What you can do for them instead",
+      "distractors": [
+        {
+          "text": "The policy that rules it out",
+          "misconceptionId": "policy-first-myth"
+        },
+        {
+          "text": "An apology for the inconvenience",
+          "misconceptionId": null
+        },
+        {
+          "text": "Who approved the rule and why",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["language", "scope"],
+      "source": "GENERATED",
+      "hash": "3be91100ce2b"
+    },
+    {
+      "id": "fix-first-myth",
+      "module": "empathy-acknowledgment",
+      "type": "misconception",
+      "difficulty": 1,
+      "criticality": 3,
+      "teach": {
+        "card": "Fixing fast feels like the kindest thing to do, but a fix delivered to someone who still feels ignored often lands badly. Ten seconds of acknowledgment changes how the whole fix is received.",
+        "why": "The emotion and the technical fault are two separate problems, and solving only the technical one leaves the caller frustrated and likely to complain."
+      },
+      "belief": "The fastest way to calm an upset customer is to fix the problem fast.",
+      "truth": "Speed helps, but a customer who feels unheard stays upset even after the fix, so acknowledge first.",
+      "tags": ["empathy"],
+      "source": "GENERATED",
+      "hash": "500ed12b82c3"
+    },
+    {
+      "id": "jargon-credibility-myth",
+      "module": "empathy-acknowledgment",
+      "type": "misconception",
+      "difficulty": 1,
+      "criticality": 2,
+      "teach": {
+        "card": "Credibility comes from the customer understanding you, not from vocabulary. The engineers customers trust most can explain a DNS problem to a receptionist without saying \"DNS.\"",
+        "why": "Customers judge competence by whether they understood the explanation and whether the fix stuck, and jargon gets in the way of the first one."
+      },
+      "belief": "Using the proper technical terms shows the customer you know what you're doing.",
+      "truth": "Plain words show competence better, because the customer can actually follow what you did and why.",
+      "tags": ["language"],
+      "source": "GENERATED",
+      "hash": "03fe9de21f0e"
+    },
+    {
+      "id": "apology-fault-myth",
+      "module": "empathy-acknowledgment",
+      "type": "misconception",
+      "difficulty": 2,
+      "criticality": 2,
+      "teach": {
+        "card": "\"I'm sorry you're dealing with this\" is about their experience, not about who caused it. You can say it in the first minute of any call, whatever the cause turns out to be.",
+        "why": "Withholding any apology comes across as cold or defensive, and the caller reads it as nobody caring, which escalates more calls than an apology ever would."
+      },
+      "belief": "Saying \"I'm sorry\" admits it was our fault, so it's safer not to apologize.",
+      "truth": "Apologizing for how the problem affects someone is not an admission of fault, and it lowers tension right away.",
+      "tags": ["empathy"],
+      "source": "GENERATED",
+      "hash": "7acd3d1ccab7"
+    },
+    {
+      "id": "dead-air-myth",
+      "module": "empathy-acknowledgment",
+      "type": "misconception",
+      "difficulty": 1,
+      "criticality": 1,
+      "teach": {
+        "card": "On the phone, the caller can't see you working. A quick \"I'm checking your mailbox rules now\" turns silence into visible progress.",
+        "why": "Without visual cues, silence is the only signal the caller gets, and most people read it as confusion or neglect rather than focus."
+      },
+      "belief": "Staying quiet while you troubleshoot sounds more professional than talking through it.",
+      "truth": "Silence on a call sounds like you're lost or gone, so briefly say what you're checking as you go.",
+      "tags": ["phone"],
+      "source": "GENERATED",
+      "hash": "d5407c0eec61"
+    },
+    {
+      "id": "policy-first-myth",
+      "module": "empathy-acknowledgment",
+      "type": "misconception",
+      "difficulty": 2,
+      "criticality": 3,
+      "teach": {
+        "card": "Policy is real, and sometimes the answer is no. But the customer's goal still needs a path, so start with the path (a workaround, a quote, a scheduled fix) and keep the rule as the explanation, not the headline.",
+        "why": "People hear a policy-first reply as a refusal and start arguing the rule, so the conversation shifts from solving their problem to defending a policy."
+      },
+      "belief": "Quoting the policy right away is the clearest and fairest way to say no.",
+      "truth": "Leading with policy sounds like a closed door; lead with what you can offer and explain the rule only if asked.",
+      "tags": ["language", "scope"],
+      "source": "GENERATED",
+      "hash": "36194e5bde31"
+    },
+    {
+      "id": "acknowledge-minimize-deflect",
+      "module": "empathy-acknowledgment",
+      "type": "category",
+      "difficulty": 2,
+      "criticality": 2,
+      "teach": {
+        "card": "Sort each thing an engineer might say by what it does to the caller. Acknowledging names their situation. Minimizing shrinks it. Deflecting points the problem somewhere else.",
+        "why": "Minimizing and deflecting often sound friendly or factual to the person saying them, but the caller hears that their problem doesn't matter or isn't yours to own."
+      },
+      "buckets": ["Acknowledges", "Minimizes", "Deflects"],
+      "items": [
+        {
+          "text": "\"That's rough with payroll due this afternoon.\"",
+          "bucket": "Acknowledges"
+        },
+        {
+          "text": "\"It's a quick fix, nothing to worry about.\"",
+          "bucket": "Minimizes",
+          "borderline": true
+        },
+        {
+          "text": "\"That's a Microsoft problem, not ours.\"",
+          "bucket": "Deflects"
+        },
+        {
+          "text": "\"Lots of people get this error, it's normal.\"",
+          "bucket": "Minimizes",
+          "borderline": true
+        },
+        {
+          "text": "\"You'd need to call your software vendor.\"",
+          "bucket": "Deflects"
+        },
+        {
+          "text": "\"Losing an hour of work on that file is awful.\"",
+          "bucket": "Acknowledges"
+        },
+        {
+          "text": "\"Calm down, it's just email.\"",
+          "bucket": "Minimizes"
+        },
+        {
+          "text": "\"Policy says we can't touch personal devices.\"",
+          "bucket": "Deflects"
+        },
+        {
+          "text": "\"I see this is your second call about it this week.\"",
+          "bucket": "Acknowledges"
+        },
+        {
+          "text": "\"Well, it was working when we left yesterday.\"",
+          "bucket": "Deflects"
+        },
+        {
+          "text": "\"I totally understand.\"",
+          "bucket": "Acknowledges",
+          "borderline": true
+        },
+        {
+          "text": "\"At least the rest of the office is still up.\"",
+          "bucket": "Minimizes"
+        }
+      ],
+      "tags": ["empathy", "language"],
+      "source": "GENERATED",
+      "hash": "faaa3230eef8"
+    },
+    {
+      "id": "opening-a-support-call",
+      "module": "empathy-acknowledgment",
+      "type": "sequence",
+      "difficulty": 1,
+      "criticality": 2,
+      "teach": {
+        "card": "A good opening has a rhythm: greet, listen, acknowledge, restate, then say what you'll do first. Each step earns the next. Callers follow your plan once they know you've understood them.",
+        "why": "Jumping to troubleshooting before acknowledging and restating means you may chase the wrong problem, and callers don't trust a plan from someone who hasn't shown they listened."
+      },
+      "prompt": "Opening a support call",
+      "steps": [
+        "Greet them and give your name",
+        "Let them explain without interrupting",
+        "Acknowledge how it's affecting them",
+        "Restate the problem in your own words",
+        "Say what you'll do first"
+      ],
+      "decoys": ["Ask if they've restarted the computer", "Explain what usually causes this"],
+      "tags": ["empathy", "phone"],
+      "source": "GENERATED",
+      "hash": "007c12ac10ad"
+    },
+    {
+      "id": "empathetic-email-reply",
+      "module": "empathy-acknowledgment",
+      "type": "sequence",
+      "difficulty": 3,
+      "criticality": 2,
+      "teach": {
+        "card": "Written replies need the same empathy as calls, compressed. Acknowledge the impact, restate the issue, show what you've done, and make the next step and its timing impossible to miss.",
+        "why": "In email the customer can't hear your tone, so structure does the work: they scan for whether you understood and when they'll hear back, and a reply that buries those reads as a brush-off."
+      },
+      "prompt": "Replying to a frustrated email",
+      "steps": [
+        "Greet them by name",
+        "Acknowledge the impact in one line",
+        "Restate the issue as you understand it",
+        "Say what you've done so far",
+        "Say what happens next and when",
+        "Tell them how to reach you directly"
+      ],
+      "decoys": ["Paste the error log for reference", "Quote the SLA response window"],
+      "tags": ["empathy", "email"],
+      "source": "GENERATED",
+      "hash": "aaf5b7855018"
+    },
+    {
+      "id": "call-dolores-scanner",
+      "module": "empathy-acknowledgment",
+      "type": "scenario",
+      "difficulty": 1,
+      "criticality": 2,
+      "teach": {
+        "card": "Anxious, non-technical callers often apologize and blame themselves. Take the blame off the table early, explain in their words, and end by making it easy to call again.",
+        "why": "A caller who thinks she broke something tends to hide the next problem until it's worse, so making her feel safe to call is part of the fix."
+      },
+      "setup": "Dolores, front desk at Brightwater Physical Therapy, calls about the scanner. Patients are checking in, she can't scan insurance cards, and she's sure she broke something.",
+      "persona": {
+        "name": "Dolores",
+        "mood": 50,
+        "style": "apologetic and anxious, not technical, worried she caused it"
+      },
+      "beats": [
+        {
+          "id": "opening",
+          "prompt": "Dolores: \"I'm so sorry to bother you. I think I broke the scanner, and I'm terrible with computers.\"",
+          "choices": [
+            {
+              "text": "You're not bothering me at all, and it's very unlikely you broke anything. Let's figure it out together. What happens when you try to scan?",
+              "quality": "good",
+              "moodDelta": 15,
+              "reply": "Oh, thank goodness. It just says \"cannot connect\" and beeps at me."
+            },
+            {
+              "text": "Before we start, what's the scanner's make and model, and is it connected over USB or the network? I'll also need its IP address to troubleshoot it.",
+              "quality": "bad",
+              "moodDelta": -15,
+              "reply": "Um... I don't know what any of that means. It's the big one by the window?"
+            },
+            {
+              "text": "No problem at all, that's what we're here for. So what seems to be the issue with the scanner today? Tell me what's going on and I'll take a look.",
+              "quality": "neutral",
+              "moodDelta": 0,
+              "reply": "It won't scan. I really hope I didn't break it."
+            }
+          ]
+        },
+        {
+          "id": "explain",
+          "prompt": "You find the password the scanner uses to save files expired overnight. Dolores asks what happened.",
+          "choices": [
+            {
+              "text": "The scanner keeps a saved password so it can drop files into your shared folder, and that password expired overnight. Nothing you did. I'm updating it now.",
+              "quality": "good",
+              "moodDelta": 15,
+              "reply": "Oh! So it wasn't me. That's such a relief."
+            },
+            {
+              "text": "The SMB credentials stored in the scan-to-folder profile went stale overnight, so authentication to the share is failing. I'm rotating the service account now.",
+              "quality": "bad",
+              "moodDelta": -15,
+              "reply": "I... okay. So is it broken or not?"
+            },
+            {
+              "text": "It's just a settings thing on our end that needed updating, nothing too exciting. I'm taking care of it right now, and it should be working again in a minute or so.",
+              "quality": "neutral",
+              "moodDelta": 0,
+              "reply": "Okay. As long as I didn't break it."
+            }
+          ]
+        },
+        {
+          "id": "close",
+          "prompt": "A test scan lands in the folder. Dolores: \"Thank you so much. I'd never have figured that out.\"",
+          "choices": [
+            {
+              "text": "Happy to help. If it ever acts up again, call us. You're never a bother. I've noted the fix on your ticket in case it comes back.",
+              "quality": "good",
+              "moodDelta": 15,
+              "reply": "You've made my whole morning. Thank you!"
+            },
+            {
+              "text": "No worries. Just try not to change any settings on it from now on, and if the screen ever asks you to update something, leave it for us.",
+              "quality": "bad",
+              "moodDelta": -15,
+              "reply": "But... I didn't change anything. Did I?"
+            },
+            {
+              "text": "Great, glad it's working again. I'll go ahead and close out the ticket on my end now. Have a good rest of your day.",
+              "quality": "neutral",
+              "moodDelta": 0,
+              "reply": "Okay. Bye then."
+            }
+          ]
+        }
+      ],
+      "rubric": {
+        "goal": "Reassure a non-technical caller and explain the fix in plain language",
+        "must": [
+          "reassure her that she is not a bother and likely not at fault",
+          "explain the cause in plain, jargon-free words"
+        ],
+        "should": ["invite her to call again", "say what you changed"],
+        "never": ["use unexplained technical jargon", "imply she caused the problem"]
+      },
+      "tags": ["empathy", "language", "phone"],
+      "source": "GENERATED",
+      "hash": "3b4ba5bc4816"
+    },
+    {
+      "id": "call-marcus-repeat-vpn",
+      "module": "empathy-acknowledgment",
+      "type": "scenario",
+      "difficulty": 3,
+      "criticality": 3,
+      "teach": {
+        "card": "Repeat problems carry the weight of every earlier call. Name the pattern, show you've read the history, and replace \"it's fixed\" with a specific plan and a time.",
+        "why": "A repeat caller is judging whether anyone owns his problem; generic troubleshooting or \"that ticket was closed\" tells him nobody does, so trust drops further."
+      },
+      "setup": "Marcus, operations lead at Copperline Construction, calls because his VPN dropped him again, the third time this month. Two earlier tickets were closed as fixed. He's tired and sarcastic.",
+      "persona": {
+        "name": "Marcus",
+        "mood": 40,
+        "style": "tired, dry and sarcastic, has stopped believing \"it's fixed\""
+      },
+      "beats": [
+        {
+          "id": "opening",
+          "prompt": "Marcus: \"Third time this month. You guys keep telling me it's fixed.\"",
+          "choices": [
+            {
+              "text": "Three drops in a month is too many, and I get why \"it's fixed\" doesn't mean much right now. I've got your last two tickets open. Let's find what's actually causing it.",
+              "quality": "good",
+              "moodDelta": 15,
+              "reply": "Okay. That's more than I usually get. Go on."
+            },
+            {
+              "text": "Sorry about that. Can you try disconnecting and reconnecting the VPN for me first? That clears up most drops, and then we'll see if it's still happening.",
+              "quality": "bad",
+              "moodDelta": -20,
+              "reply": "Yeah, that's what the last two people said. Did that. Twice."
+            },
+            {
+              "text": "I can see those last two tickets were closed as resolved, so this is most likely a brand-new issue. I'll open a fresh ticket and we can start troubleshooting it from scratch.",
+              "quality": "bad",
+              "moodDelta": -15,
+              "reply": "A new issue that looks exactly like the old one. Sure."
+            },
+            {
+              "text": "Okay, sorry to hear it's happening again. Let me pull up your account and take a look at what's going on with the VPN, and we'll go from there.",
+              "quality": "neutral",
+              "moodDelta": 0,
+              "reply": "Take your time. Apparently I've got nothing but time."
+            }
+          ]
+        },
+        {
+          "id": "history",
+          "prompt": "Marcus: \"Do I really have to explain this whole thing again?\"",
+          "choices": [
+            {
+              "text": "No. I've read both tickets. Let me tell you what I see, and you stop me if I've missed anything.",
+              "quality": "good",
+              "moodDelta": 15,
+              "reply": "Huh. Okay, go ahead."
+            },
+            {
+              "text": "Sorry, I'll need you to walk me through it again from the very start so I have it all in my notes.",
+              "quality": "bad",
+              "moodDelta": -15,
+              "reply": "Unbelievable. Fine. For the third time..."
+            },
+            {
+              "text": "Not the whole story, no. Just give me the short version of what's been going on with the VPN lately.",
+              "quality": "neutral",
+              "moodDelta": -5,
+              "reply": "It drops. Every couple of days. Like I said last time."
+            }
+          ]
+        },
+        {
+          "id": "next-step",
+          "prompt": "You suspect his home router is dropping the connection, but you need to test after hours. Marcus asks what happens now.",
+          "choices": [
+            {
+              "text": "I'll watch your connection logs tonight and call you by 10 tomorrow with what I found and a fix plan. If it drops before then, call me directly.",
+              "quality": "good",
+              "moodDelta": 15,
+              "reply": "A call by 10 with an actual plan. I'll hold you to that."
+            },
+            {
+              "text": "It's most likely your home internet, honestly, so there's not much we can do from our end. I'd call your provider and ask them to check the line.",
+              "quality": "bad",
+              "moodDelta": -20,
+              "reply": "Great. So I'm on my own. Again."
+            },
+            {
+              "text": "We'll keep an eye on your connection over the next few days and reach out if we find anything. In the meantime, just let us know if it drops on you again.",
+              "quality": "neutral",
+              "moodDelta": 0,
+              "reply": "That's what the last ticket said."
+            }
+          ]
+        }
+      ],
+      "rubric": {
+        "goal": "Rebuild trust with a customer facing a repeat problem",
+        "must": [
+          "acknowledge that the problem keeps coming back",
+          "show you know the history without making him repeat it"
+        ],
+        "should": [
+          "commit to a specific next step with a time",
+          "take ownership instead of pointing to closed tickets"
+        ],
+        "never": ["ask him to start over from scratch", "treat it as a brand-new, unrelated issue"]
+      },
+      "tags": ["empathy", "follow-through", "phone"],
+      "source": "GENERATED",
+      "hash": "22c31ec1c149"
+    },
+    {
+      "id": "flawed-jargon-email",
+      "module": "empathy-acknowledgment",
+      "type": "flawed_example",
+      "difficulty": 2,
+      "criticality": 2,
+      "teach": {
+        "card": "This resolution email went to a user who couldn't log in all week. It's technically accurate. Find the problems in tone, clarity and follow-through.",
+        "why": "A correct fix explained in jargon, wrapped in blame and closed without a check leaves the customer confused and defensive, and likely to call back."
+      },
+      "artifact": "Tom, the login failures you've had all week were caused by a stale Kerberos ticket on your endpoint. Users usually cause this by never rebooting, so please reboot daily. Ticket closed.",
+      "flaws": [
+        {
+          "span": "Tom, the login failures you've had all week were caused by",
+          "issue": "Jumps straight to the cause; one line acknowledging a week of failed logins would land better."
+        },
+        {
+          "span": "a stale Kerberos ticket on your endpoint",
+          "issue": "Unexplained jargon. Say it plainly, like \"a saved sign-in on your laptop went out of date.\""
+        },
+        {
+          "span": "Users usually cause this by never rebooting",
+          "issue": "Blames the user. Explain what helps without implying fault."
+        },
+        {
+          "span": "Ticket closed.",
+          "issue": "Closes without confirming he can log in now or telling him what to do if it happens again."
+        }
+      ],
+      "tags": ["language", "email"],
+      "source": "GENERATED",
+      "hash": "a8ee4aac7f99"
+    },
+    {
+      "id": "let-them-finish",
+      "module": "de-escalation",
+      "type": "term",
+      "difficulty": 1,
+      "criticality": 3,
+      "teach": {
+        "card": "When an angry caller is venting, let them finish. Take notes, make small listening sounds, and wait for the pause. Most of the facts you need come out in the vent anyway.",
+        "why": "Cutting into a vent makes people start over louder; once they've said it all, they're far more willing to answer your questions."
+      },
+      "prompt": "An angry caller is mid-rant. What's your first job?",
+      "answer": "Let them finish without interrupting",
+      "distractors": [
+        {
+          "text": "Cut in to get the key facts fast",
+          "misconceptionId": "interrupt-myth"
+        },
+        {
+          "text": "Ask them to calm down so you can help",
+          "misconceptionId": "calm-down-myth"
+        },
+        {
+          "text": "Explain the policy so they know the rules",
+          "misconceptionId": "policy-first-myth"
+        }
+      ],
+      "tags": ["de-escalation", "listening"],
+      "source": "GENERATED",
+      "hash": "63029dbcaa39"
+    },
+    {
+      "id": "steady-voice",
+      "module": "de-escalation",
+      "type": "term",
+      "difficulty": 1,
+      "criticality": 2,
+      "teach": {
+        "card": "When a caller is loud, keep your voice calm, steady and a little slower than theirs. Don't go silent and don't get chirpy. People tend to match the energy they hear, so give them something calmer to match.",
+        "why": "Volume and pace are contagious on a call: a raised or rushed voice from you confirms this is a crisis, while a level one signals someone is in control."
+      },
+      "prompt": "A caller is shouting. How should your voice sound?",
+      "answer": "Calm, steady, and a bit slower than theirs",
+      "distractors": [
+        {
+          "text": "Just as loud, so they know you care",
+          "misconceptionId": "match-energy-myth"
+        },
+        {
+          "text": "Upbeat and cheerful to lighten the mood",
+          "misconceptionId": null
+        },
+        {
+          "text": "Firm and clipped to show you're in charge",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["de-escalation", "phone"],
+      "source": "GENERATED",
+      "hash": "3a80c806066b"
+    },
+    {
+      "id": "next-update-time",
+      "module": "de-escalation",
+      "type": "term",
+      "difficulty": 2,
+      "criticality": 3,
+      "teach": {
+        "card": "When you can't promise when something will be fixed, promise when they'll hear from you next, and keep it. \"I'll call you by 2:30 with an update\" is a promise you control. \"It'll be fixed in ten minutes\" is not.",
+        "why": "A missed fix estimate breaks trust, but an update time is fully in your hands, so it gives the caller certainty you can actually deliver."
+      },
+      "prompt": "Which line best calms a worried caller during an outage?",
+      "answer": "\"I'll call you by 2:30 with an update\"",
+      "distractors": [
+        {
+          "text": "\"It should be fixed in ten minutes\"",
+          "misconceptionId": "fast-fix-promise-myth"
+        },
+        {
+          "text": "\"We'll get back to you as soon as we can\"",
+          "misconceptionId": null
+        },
+        {
+          "text": "\"You'll get an email once it's resolved\"",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["de-escalation", "expectations"],
+      "source": "GENERATED",
+      "hash": "cd6b87fa919b"
+    },
+    {
+      "id": "when-to-correct-blame",
+      "module": "de-escalation",
+      "type": "term",
+      "difficulty": 2,
+      "criticality": 2,
+      "teach": {
+        "card": "If a caller blames you for something that wasn't your doing, hold the correction. Fix the problem first. Afterward, share the cause as prevention: \"Your internet provider had an outage; a backup line would keep you up next time.\"",
+        "why": "Correcting someone while they're still upset sounds like defending yourself instead of helping, so they dig in; the same facts land as useful advice once service is back."
+      },
+      "prompt": "A caller blames you for an outage their internet provider caused. When do you say so?",
+      "answer": "After it's fixed, framed as prevention",
+      "distractors": [
+        {
+          "text": "Right away, so they stop blaming you",
+          "misconceptionId": "set-record-myth"
+        },
+        {
+          "text": "Never; just let them keep believing it",
+          "misconceptionId": null
+        },
+        {
+          "text": "Only if they ask who caused it",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["de-escalation"],
+      "source": "GENERATED",
+      "hash": "d3c53938cd0b"
+    },
+    {
+      "id": "personal-insult-boundary",
+      "module": "de-escalation",
+      "type": "term",
+      "difficulty": 3,
+      "criticality": 3,
+      "teach": {
+        "card": "If a caller insults you personally, name the behavior once, calmly, and offer to keep helping: \"I want to fix this, and I can't do that with personal comments.\" Then follow your team's policy if it continues. Anger at the situation is normal; abuse aimed at you is the line.",
+        "why": "A calm boundary keeps the call about the problem; silently absorbing abuse tends to let it grow, and snapping back or hanging up turns a fixable call into a complaint."
+      },
+      "prompt": "A caller starts insulting you personally. What's the best first move?",
+      "answer": "Set a calm boundary, then keep helping",
+      "distractors": [
+        {
+          "text": "Snap back so they know you won't be pushed",
+          "misconceptionId": "match-energy-myth"
+        },
+        {
+          "text": "Ignore it; taking abuse is part of the job",
+          "misconceptionId": null
+        },
+        {
+          "text": "Hang up right away without a word",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["de-escalation", "boundaries"],
+      "source": "GENERATED",
+      "hash": "c280b2cb1475"
+    },
+    {
+      "id": "manager-request",
+      "module": "de-escalation",
+      "type": "term",
+      "difficulty": 3,
+      "criticality": 2,
+      "teach": {
+        "card": "When a caller asks for your manager, don't argue or take it personally. Offer both paths: \"I can keep working on this now, or have my lead call you within the hour. Which would you prefer?\" If they still want your lead, do a warm handoff.",
+        "why": "Resisting the request makes the caller feel trapped and raises the temperature, while offering it as a real option often leads them to choose to stay with you."
+      },
+      "prompt": "A caller asks for your manager, but you can still fix the issue. Best move?",
+      "answer": "Offer both: your help now or a lead callback",
+      "distractors": [
+        {
+          "text": "Talk them out of it so you don't look bad",
+          "misconceptionId": "manager-request-myth"
+        },
+        {
+          "text": "Transfer right away without a briefing",
+          "misconceptionId": null
+        },
+        {
+          "text": "Say the manager will tell them the same",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["de-escalation", "handoff"],
+      "source": "GENERATED",
+      "hash": "8845c393bf19"
+    },
+    {
+      "id": "interrupt-myth",
+      "module": "de-escalation",
+      "type": "misconception",
+      "difficulty": 1,
+      "criticality": 2,
+      "teach": {
+        "card": "Venting feels like wasted time when the queue is full, but interrupting resets the clock. Let it run; you'll often hear the key facts along the way.",
+        "why": "An interrupted caller feels unheard and repeats themselves, louder, so the call ends up longer than if you had waited."
+      },
+      "belief": "Interrupting a venting caller saves time because you get to the facts sooner.",
+      "truth": "Cutting off a vent usually restarts it, so letting the caller finish is the faster way to the facts.",
+      "tags": ["de-escalation", "listening"],
+      "source": "GENERATED",
+      "hash": "ab3d737f7994"
+    },
+    {
+      "id": "calm-down-myth",
+      "module": "de-escalation",
+      "type": "misconception",
+      "difficulty": 1,
+      "criticality": 3,
+      "teach": {
+        "card": "\"Calm down\" sounds reasonable to the person saying it, but the caller hears \"your reaction is the problem.\" Acknowledge what's driving the anger instead.",
+        "why": "Telling someone how to feel implies their reaction is unreasonable, which adds a second grievance on top of the original problem."
+      },
+      "belief": "Asking an angry caller to calm down helps them get to the point.",
+      "truth": "Being told to calm down feels dismissive and usually raises the heat; acknowledging the feeling lowers it.",
+      "tags": ["de-escalation"],
+      "source": "GENERATED",
+      "hash": "4cef87701fa9"
+    },
+    {
+      "id": "match-energy-myth",
+      "module": "de-escalation",
+      "type": "misconception",
+      "difficulty": 2,
+      "criticality": 2,
+      "teach": {
+        "card": "Taking a problem seriously shows up in what you do (fast action, clear commitments), not in how loud or sharp you sound. Your steadiness is the anchor.",
+        "why": "People unconsciously mirror the tone they hear, so matched intensity feeds the anger back to them instead of settling it."
+      },
+      "belief": "Matching a caller's intensity shows them you take the problem seriously.",
+      "truth": "Raised intensity escalates the call; a calm, steady voice is what brings an angry caller down.",
+      "tags": ["de-escalation", "phone"],
+      "source": "GENERATED",
+      "hash": "8d5de81ad460"
+    },
+    {
+      "id": "fast-fix-promise-myth",
+      "module": "de-escalation",
+      "type": "misconception",
+      "difficulty": 2,
+      "criticality": 3,
+      "teach": {
+        "card": "\"Ten minutes\" feels kind in the moment and becomes a broken promise at minute eleven. Commit to what you control: when they'll hear from you next.",
+        "why": "The caller plans around whatever time you give, so a missed estimate costs them more than an honest \"I'll update you by 2:30\" would have."
+      },
+      "belief": "Promising a quick fix is the best way to calm a worried caller.",
+      "truth": "A fix time you can't control backfires when it slips; promise the next update time instead.",
+      "tags": ["de-escalation", "expectations"],
+      "source": "GENERATED",
+      "hash": "8909e35a263d"
+    },
+    {
+      "id": "set-record-myth",
+      "module": "de-escalation",
+      "type": "misconception",
+      "difficulty": 2,
+      "criticality": 2,
+      "teach": {
+        "card": "Accuracy matters, but timing decides how it lands. Mid-outage, a correction sounds like an excuse; afterward, the same fact becomes useful advice.",
+        "why": "While the problem is live, the caller is listening for whether you'll help, not for who's at fault, so a correction reads as a refusal to own it."
+      },
+      "belief": "If a caller blames us for something that isn't our fault, correct them right away.",
+      "truth": "Correcting blame mid-crisis sounds defensive; fix it first, then share the cause as a way to prevent repeats.",
+      "tags": ["de-escalation"],
+      "source": "GENERATED",
+      "hash": "227709d4d415"
+    },
+    {
+      "id": "manager-request-myth",
+      "module": "de-escalation",
+      "type": "misconception",
+      "difficulty": 2,
+      "criticality": 2,
+      "teach": {
+        "card": "Some callers ask for a manager out of habit, urgency or a past experience, not because of you. Offer it gracefully and hand off warmly if they still want it.",
+        "why": "Treating the request as a personal failure makes engineers resist it, and resisting is what actually turns the call sour."
+      },
+      "belief": "If a caller asks for your manager, it means you failed the call.",
+      "truth": "Asking for a manager is a normal request; handling it smoothly is part of a good call, not proof of a bad one.",
+      "tags": ["de-escalation", "handoff"],
+      "source": "GENERATED",
+      "hash": "0946468cdd59"
+    },
+    {
+      "id": "hot-caller-response",
+      "module": "de-escalation",
+      "type": "category",
+      "difficulty": 3,
+      "criticality": 3,
+      "teach": {
+        "card": "Sort each caller behavior by the right response. Anger at the situation is normal: keep helping. A personal insult: set a boundary. Threats, repeated abuse after a warning, or a request for your lead: bring in your lead.",
+        "why": "Treating every raised voice as abuse ends calls you should finish, while treating real abuse or threats as normal leaves you and the client relationship exposed."
+      },
+      "buckets": ["Keep helping", "Set a boundary", "Get your lead"],
+      "items": [
+        {
+          "text": "Loud and venting about the outage, not at you",
+          "bucket": "Keep helping"
+        },
+        {
+          "text": "Swearing about the situation, not at you",
+          "bucket": "Keep helping",
+          "borderline": true
+        },
+        {
+          "text": "Calls you useless and an idiot",
+          "bucket": "Set a boundary"
+        },
+        {
+          "text": "Keeps insulting you after one calm warning",
+          "bucket": "Get your lead"
+        },
+        {
+          "text": "Asks to speak to your manager",
+          "bucket": "Get your lead",
+          "borderline": true
+        },
+        {
+          "text": "Threatens to cancel the contract over this",
+          "bucket": "Get your lead",
+          "borderline": true
+        },
+        {
+          "text": "Says they'll post a bad online review",
+          "bucket": "Keep helping",
+          "borderline": true
+        },
+        {
+          "text": "Threatens to \"come down there\" and confront staff",
+          "bucket": "Get your lead"
+        },
+        {
+          "text": "Repeats the same complaint for the third time",
+          "bucket": "Keep helping"
+        },
+        {
+          "text": "Mocks your accent",
+          "bucket": "Set a boundary"
+        },
+        {
+          "text": "Demands you stay on the line while they test",
+          "bucket": "Keep helping"
+        },
+        {
+          "text": "Says you sound like you're twelve",
+          "bucket": "Set a boundary"
+        }
+      ],
+      "tags": ["de-escalation", "boundaries"],
+      "source": "GENERATED",
+      "hash": "f6cd9b9f389d"
+    },
+    {
+      "id": "de-escalation-call-flow",
+      "module": "de-escalation",
+      "type": "sequence",
+      "difficulty": 3,
+      "criticality": 3,
+      "teach": {
+        "card": "Six steps take a call from hot to workable: let them vent, acknowledge, restate, own the next action, give a time, and confirm the plan. Skipping ahead to the fix is the most common way calls re-escalate.",
+        "why": "Each step answers what an angry caller needs in turn (to be heard, understood, see action, and know when they'll hear back), and out of order the later steps don't land."
+      },
+      "prompt": "De-escalation call flow",
+      "steps": [
+        "Let them vent without interrupting",
+        "Acknowledge the impact and the feeling",
+        "Restate the problem in your own words",
+        "Say what you'll do right now",
+        "Give a specific time for the next update",
+        "Confirm they're okay with the plan"
+      ],
+      "decoys": ["Ask them to calm down so you can help", "Put them on hold to research first"],
+      "tags": ["de-escalation", "phone"],
+      "source": "GENERATED",
+      "hash": "be046f28af7a"
+    },
+    {
+      "id": "warm-transfer-to-lead",
+      "module": "de-escalation",
+      "type": "sequence",
+      "difficulty": 2,
+      "criticality": 2,
+      "teach": {
+        "card": "A warm transfer means the caller never has to repeat themselves. Explain the handoff, brief your lead privately, introduce the caller with the issue on the line, and stay until your lead has it.",
+        "why": "Making a frustrated caller repeat their story to a second person tells them the first conversation was wasted, which undoes the de-escalation you already did."
+      },
+      "prompt": "Warm transfer to your lead",
+      "steps": [
+        "Tell the caller why you're bringing in your lead",
+        "Ask before placing them on a short hold",
+        "Brief your lead on the issue and the mood",
+        "Introduce the caller and the issue on the line",
+        "Stay on until your lead has it"
+      ],
+      "decoys": ["Ask the caller to explain it all again", "Send them to your lead's voicemail"],
+      "tags": ["de-escalation", "handoff"],
+      "source": "GENERATED",
+      "hash": "205b4a9c8bc2"
+    },
+    {
+      "id": "call-priya-month-end-outage",
+      "module": "de-escalation",
+      "type": "scenario",
+      "difficulty": 2,
+      "criticality": 3,
+      "teach": {
+        "card": "Under a hard deadline, the caller needs three things fast: proof you get the stakes, visible action, and a time they can plan around. Save root cause and recommendations for after the crisis.",
+        "why": "During an outage, every sentence that isn't about getting them back up (blame, sales, vague estimates) sounds like you've lost sight of their deadline."
+      },
+      "setup": "Priya, controller at Fennimore Insurance Group, calls at 3:40 PM on the last day of the month. The shared drive is unreachable, and her team can't open the ledger files they need to close the books by 5.",
+      "persona": {
+        "name": "Priya",
+        "mood": 30,
+        "style": "sharp and fast-talking, under deadline pressure from her CFO"
+      },
+      "beats": [
+        {
+          "id": "vent",
+          "prompt": "Priya: \"The shared drive is GONE. We close the month at five. This is unacceptable.\"",
+          "choices": [
+            {
+              "text": "Month-end with the ledgers locked away is terrible timing, and I'm on it right now. Is it everyone in the office, or just some people?",
+              "quality": "good",
+              "moodDelta": 15,
+              "reply": "Everyone. Nobody can open anything on the S drive."
+            },
+            {
+              "text": "Okay, before anything else, can you try logging out of your computer and back in for me? That fixes a lot of mapped-drive problems on its own.",
+              "quality": "bad",
+              "moodDelta": -20,
+              "reply": "Are you serious? Twelve people can't all have the same login problem."
+            },
+            {
+              "text": "I understand you're stressed, but I need you to lower your voice so I can help you. Let's take this one step at a time.",
+              "quality": "bad",
+              "moodDelta": -20,
+              "reply": "Don't tell me how to talk. Fix the drive."
+            },
+            {
+              "text": "Let me pull up your company's account and look at the server. Give me a moment while I get into the system and see what's going on.",
+              "quality": "neutral",
+              "moodDelta": 0,
+              "reply": "Fine. Quickly."
+            }
+          ]
+        },
+        {
+          "id": "blame",
+          "prompt": "Priya: \"This is the second outage this quarter. What exactly are we paying you for?\"",
+          "choices": [
+            {
+              "text": "That's a fair question, and you'll get a real answer once you're back up. Right now my whole focus is getting your team into those files before five.",
+              "quality": "good",
+              "moodDelta": 15,
+              "reply": "...Fine. Just get us back in."
+            },
+            {
+              "text": "Actually, the last outage was a power failure in your building, not anything on our side. I can send you the incident report if that helps.",
+              "quality": "bad",
+              "moodDelta": -20,
+              "reply": "So it's our fault now? Unbelievable."
+            },
+            {
+              "text": "I understand, and I hear your frustration about the outages. I'm working on it right now and I'll do everything I can to get it sorted.",
+              "quality": "neutral",
+              "moodDelta": 0,
+              "reply": "Work faster."
+            }
+          ]
+        },
+        {
+          "id": "timeline",
+          "prompt": "The file server needs a restart that takes about 15 minutes. Priya: \"How long?\"",
+          "choices": [
+            {
+              "text": "About 15 minutes for the restart. I'll call you the moment it's up, and by 4:05 at the latest either way.",
+              "quality": "good",
+              "moodDelta": 15,
+              "reply": "4:05. Okay. I'll tell the team."
+            },
+            {
+              "text": "Hard to say, honestly. Servers can be unpredictable after a restart, so I'll just let you know once it's back up.",
+              "quality": "bad",
+              "moodDelta": -15,
+              "reply": "That's not an answer. I need a time to give my CFO."
+            },
+            {
+              "text": "Should only be two minutes, tops. It's a quick restart, so go ahead and tell your team to stay put and wait for it.",
+              "quality": "bad",
+              "moodDelta": -10,
+              "reply": "Two minutes? Last time \"two minutes\" turned into an hour."
+            }
+          ]
+        },
+        {
+          "id": "close",
+          "prompt": "The drive is back at 3:58. Priya sounds relieved but drained.",
+          "choices": [
+            {
+              "text": "You're back up. Can you open one ledger file while I'm on the line? After your close, I'll send a short note on what caused this and how we keep it from happening again.",
+              "quality": "good",
+              "moodDelta": 20,
+              "reply": "It opens. Thank you. And yes, I want that note."
+            },
+            {
+              "text": "Great, you're back. Honestly, a server upgrade would keep this from happening again. Want me to send you a quote for new hardware while it's fresh?",
+              "quality": "bad",
+              "moodDelta": -15,
+              "reply": "Not now. I have an hour to close the books."
+            },
+            {
+              "text": "Great, it looks like everything's working again on our end. I'll close out the ticket now, and let us know if anything else comes up before your month-end close this afternoon.",
+              "quality": "neutral",
+              "moodDelta": 0,
+              "reply": "Okay. Thanks."
+            }
+          ]
+        }
+      ],
+      "rubric": {
+        "goal": "Take ownership of a deadline-critical outage and keep the caller informed",
+        "must": [
+          "acknowledge the deadline and business impact",
+          "commit to a specific time for the next update"
+        ],
+        "should": [
+          "confirm the fix works with her before ending the call",
+          "offer a root-cause follow-up once the crisis is over"
+        ],
+        "never": ["argue about who caused past outages", "promise a fix time you can't control"]
+      },
+      "tags": ["de-escalation", "expectations", "phone"],
+      "source": "GENERATED",
+      "hash": "f60075b8bde0"
+    },
+    {
+      "id": "call-glen-hostile-caller",
+      "module": "de-escalation",
+      "type": "scenario",
+      "difficulty": 3,
+      "criticality": 3,
+      "teach": {
+        "card": "Hostile callers test whether you'll fight, fold or flee. Respond to the problem, not the jab; set a boundary only when it gets personal, and give them a choice so they feel some control.",
+        "why": "Defensiveness and abrupt hand-offs both confirm the caller's belief that nobody cares, while a calm boundary plus a plan gives him a reason to cooperate."
+      },
+      "setup": "Glen, a property manager at Redtail Property Management, calls because his emails to tenants are bouncing. He's loud, swearing, and about to get personal.",
+      "persona": {
+        "name": "Glen",
+        "mood": 25,
+        "style": "loud, swears, takes it personally, settles down once he has a plan"
+      },
+      "beats": [
+        {
+          "id": "opening",
+          "prompt": "Glen: \"My emails are bouncing AGAIN. Are you people completely incompetent?\"",
+          "choices": [
+            {
+              "text": "Bounced emails mean your tenants aren't hearing from you, and that's a real problem. I'm on it now. What does the bounce message say?",
+              "quality": "good",
+              "moodDelta": 15,
+              "reply": "Something about the mailbox. Hang on, I'll read it to you."
+            },
+            {
+              "text": "I'm not incompetent, sir. I just picked up your call a minute ago, so I haven't even had a chance to look at anything yet.",
+              "quality": "bad",
+              "moodDelta": -20,
+              "reply": "Oh, great, so it's somebody else's fault. Typical."
+            },
+            {
+              "text": "If you're going to talk to me like that, I'll have to end the call. I'm happy to help you, but only once you can speak to me respectfully.",
+              "quality": "bad",
+              "moodDelta": -15,
+              "reply": "You'll hang up on ME? Unbelievable."
+            },
+            {
+              "text": "Okay, let's take a look at the bouncing emails. What's your email address, and which account is it on? I'll pull it up from there.",
+              "quality": "neutral",
+              "moodDelta": 0,
+              "reply": "Same one it's always been!"
+            }
+          ]
+        },
+        {
+          "id": "insult",
+          "prompt": "Glen: \"You sound like you're twelve. Put someone on who actually knows what they're doing.\"",
+          "choices": [
+            {
+              "text": "Glen, I want to fix this for you, and I can't do that with personal comments. I can keep working on it now, or have my lead call you within the hour. Which do you prefer?",
+              "quality": "good",
+              "moodDelta": 15,
+              "reply": "...Fine. Just keep going. What do you need?"
+            },
+            {
+              "text": "Fine, if that's how you feel about it. Hold on and I'll transfer you to someone else on the team, and they can pick it up from here. It might be a bit of a wait, though.",
+              "quality": "bad",
+              "moodDelta": -15,
+              "reply": "Wow. You're just handing me off? Perfect."
+            },
+            {
+              "text": "Okay. Anyway, what does the bounce message actually say? Read me the first line of it if you can, and we'll go from there and get your email moving again.",
+              "quality": "neutral",
+              "moodDelta": -5,
+              "reply": "Whatever. It says the mailbox is full."
+            }
+          ]
+        },
+        {
+          "id": "cause",
+          "prompt": "The bounce says his mailbox is full. Glen: \"So what, that's MY fault now?\"",
+          "choices": [
+            {
+              "text": "Not at all. Nothing warned you it was filling up. I'll free up space now and set an alert so we catch it before it happens again.",
+              "quality": "good",
+              "moodDelta": 20,
+              "reply": "An alert. Okay. That would actually help."
+            },
+            {
+              "text": "Well, the mailbox is full, so you'll need to delete some old emails and empty your deleted items folder before new mail will come in again.",
+              "quality": "bad",
+              "moodDelta": -15,
+              "reply": "I don't have time to clean out years of email!"
+            },
+            {
+              "text": "It happens to a lot of people, so don't worry about it too much. Mailboxes fill up over time, especially with big attachments and old newsletters.",
+              "quality": "neutral",
+              "moodDelta": -5,
+              "reply": "Doesn't help me much."
+            }
+          ]
+        },
+        {
+          "id": "close",
+          "prompt": "Mail is flowing again. Glen, quieter: \"Okay. Sorry I went off on you.\"",
+          "choices": [
+            {
+              "text": "No harm done. Bouncing mail is stressful. The alert's set, and I'll check your mailbox Friday to make sure it stays healthy.",
+              "quality": "good",
+              "moodDelta": 15,
+              "reply": "Appreciate that. Really."
+            },
+            {
+              "text": "It's fine, but you really can't talk to people like that. We're here to help, and it makes our job a lot harder when you start yelling.",
+              "quality": "bad",
+              "moodDelta": -10,
+              "reply": "Yeah, yeah. I said I was sorry."
+            },
+            {
+              "text": "No problem, it happens. Glad the mail's flowing again. Is there anything else I can help you with while I have you?",
+              "quality": "neutral",
+              "moodDelta": 0,
+              "reply": "No, that's it."
+            }
+          ]
+        }
+      ],
+      "rubric": {
+        "goal": "Hold a respectful boundary with a hostile caller while still solving the problem",
+        "must": ["address the personal remark calmly without insulting back", "keep offering to help"],
+        "should": [
+          "offer a choice between continuing now or a callback from a lead",
+          "avoid blaming him for the cause"
+        ],
+        "never": ["respond with sarcasm or defensiveness", "end or transfer the call without warning"]
+      },
+      "tags": ["de-escalation", "boundaries", "phone"],
+      "source": "GENERATED",
+      "hash": "3a4796bb6ca0"
+    },
+    {
+      "id": "flawed-calm-down-call",
+      "module": "de-escalation",
+      "type": "flawed_example",
+      "difficulty": 2,
+      "criticality": 3,
+      "teach": {
+        "card": "This is what an engineer said to an upset caller during a cloud email outage. Find the lines that make it worse.",
+        "why": "Each flagged line moves the focus off the caller's problem (onto their tone, their listening, or a guess), and that's what keeps a call escalated."
+      },
+      "artifact": "Okay, calm down, I can't help you if you're yelling. Like I said, this is a Microsoft outage, so there's nothing we can do. It'll probably be back in ten minutes.",
+      "flaws": [
+        {
+          "span": "calm down, I can't help you if you're yelling",
+          "issue": "Tells the caller how to feel and makes their reaction the problem. Acknowledge the impact instead."
+        },
+        {
+          "span": "Like I said",
+          "issue": "Implies they weren't listening, which sounds condescending to someone already upset."
+        },
+        {
+          "span": "there's nothing we can do",
+          "issue": "Even when the cause is outside your control, you can monitor, offer a workaround and send updates. Say that."
+        },
+        {
+          "span": "It'll probably be back in ten minutes",
+          "issue": "Guesses at a fix time you don't control. Promise your next update time instead."
+        }
+      ],
+      "tags": ["de-escalation", "expectations"],
+      "source": "GENERATED",
+      "hash": "ed5ba14ec8d0"
+    },
+    {
+      "id": "impact-meaning",
+      "module": "ticket-handling",
+      "type": "term",
+      "difficulty": 1,
+      "criticality": 2,
+      "teach": {
+        "card": "Impact is how much of the business a problem hits: one person, a team, the whole office, or a critical system like payroll or phones. It's half of how priority is set. The other half is urgency.",
+        "why": "Impact keeps triage tied to business harm, so a quiet ticket that stops a whole office doesn't sit behind a noisy one that affects a single person."
+      },
+      "prompt": "In triage, what does \"impact\" measure?",
+      "answer": "How much of the business is affected",
+      "distractors": [
+        {
+          "text": "How upset the person reporting it is",
+          "misconceptionId": "loudest-urgent-myth"
+        },
+        {
+          "text": "How senior the person reporting it is",
+          "misconceptionId": "vip-priority-myth"
+        },
+        {
+          "text": "How long the fix is likely to take",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["triage"],
+      "source": "GENERATED",
+      "hash": "19fe064c0330"
+    },
+    {
+      "id": "urgency-meaning",
+      "module": "ticket-handling",
+      "type": "term",
+      "difficulty": 1,
+      "criticality": 2,
+      "teach": {
+        "card": "Urgency is how fast the harm grows if the problem waits: a payroll run due today, a client meeting in an hour, a security alert that's spreading. A small problem with a hard deadline can outrank a bigger one with no clock on it.",
+        "why": "Without it, triage treats a problem that will cost money within the hour the same as one that can safely wait until next week."
+      },
+      "prompt": "In triage, what does \"urgency\" measure?",
+      "answer": "How fast the harm grows if it waits",
+      "distractors": [
+        {
+          "text": "How loudly the customer is pushing",
+          "misconceptionId": "loudest-urgent-myth"
+        },
+        {
+          "text": "How long the ticket has been open",
+          "misconceptionId": null
+        },
+        {
+          "text": "How many times they've called about it",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["triage"],
+      "source": "GENERATED",
+      "hash": "4fdaedeae5a3"
+    },
+    {
+      "id": "confirm-before-closing",
+      "module": "ticket-handling",
+      "type": "term",
+      "difficulty": 1,
+      "criticality": 3,
+      "teach": {
+        "card": "A fix isn't done until the user confirms it works for them. Have them test while you're connected, or reach them before you close. If you can't reach them, tell them what you did and how to reopen.",
+        "why": "What works from your console can still fail at the user's desk, and a silent close turns that into a repeat call from someone who now trusts the team less."
+      },
+      "prompt": "Before you close a ticket, you should...",
+      "answer": "Confirm with the user that it works",
+      "distractors": [
+        {
+          "text": "Test it yourself, then close right away",
+          "misconceptionId": "close-on-fix-myth"
+        },
+        {
+          "text": "Close it; they can always reopen it",
+          "misconceptionId": null
+        },
+        {
+          "text": "Wait a week to see if they call back",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["follow-through"],
+      "source": "GENERATED",
+      "hash": "a71298cf8f72"
+    },
+    {
+      "id": "when-to-escalate",
+      "module": "ticket-handling",
+      "type": "term",
+      "difficulty": 2,
+      "criticality": 3,
+      "teach": {
+        "card": "Escalate when the problem is past your skill, your access, or your time box, or when it's spreading. Escalating early with good notes gets the customer fixed faster than an hour of solo guessing.",
+        "why": "Holding a ticket you can't move costs the customer time they'll never get back, while a well-documented escalation lets someone better placed start immediately."
+      },
+      "prompt": "When should you escalate a ticket you're working on?",
+      "answer": "When it's past your skill, access, or time",
+      "distractors": [
+        {
+          "text": "Only after you've tried everything yourself",
+          "misconceptionId": "escalation-failure-myth"
+        },
+        {
+          "text": "Whenever the customer sounds really upset",
+          "misconceptionId": "loudest-urgent-myth"
+        },
+        {
+          "text": "As soon as you don't know the answer offhand",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["escalation"],
+      "source": "GENERATED",
+      "hash": "db6dd1fb770b"
+    },
+    {
+      "id": "update-with-no-news",
+      "module": "ticket-handling",
+      "type": "term",
+      "difficulty": 2,
+      "criticality": 3,
+      "teach": {
+        "card": "Keep the customer updated on the schedule you promised, even when nothing has changed. Say what you're waiting on, what you're doing meanwhile, and when they'll hear from you next. Waiting on a vendor is still news.",
+        "why": "When the customer hears nothing, they assume nothing is happening, and that silence generates chase-up calls and escalations a two-line update would have prevented."
+      },
+      "prompt": "Day 3 on a ticket stuck waiting on a vendor, nothing new. Do you update the client?",
+      "answer": "Yes: what you're waiting on, and when next",
+      "distractors": [
+        {
+          "text": "No, there's nothing new to tell them",
+          "misconceptionId": "no-news-myth"
+        },
+        {
+          "text": "Only if they reach out and ask for one",
+          "misconceptionId": null
+        },
+        {
+          "text": "No, the ticket status already says it",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["follow-through", "expectations"],
+      "source": "GENERATED",
+      "hash": "8a656cf41c8b"
+    },
+    {
+      "id": "exec-urgent-request",
+      "module": "ticket-handling",
+      "type": "term",
+      "difficulty": 3,
+      "criticality": 3,
+      "teach": {
+        "card": "Titles don't set priority; impact and urgency do. A CEO who can't open her slides minutes before a board meeting is urgent because of the meeting. The same CEO wanting a new mouse is not. Treat leaders well either way, and triage honestly.",
+        "why": "Priority by title pushes genuinely urgent work for other users down the queue, and when that comes out, the client's own staff lose trust in the service."
+      },
+      "prompt": "A CEO can't open a PDF, and her board meeting starts in 20 minutes. What drives the priority?",
+      "answer": "The meeting deadline, not her title",
+      "distractors": [
+        {
+          "text": "Her title; executives are always top priority",
+          "misconceptionId": "vip-priority-myth"
+        },
+        {
+          "text": "One user affected, so it's low priority",
+          "misconceptionId": null
+        },
+        {
+          "text": "How loudly her assistant called it in",
+          "misconceptionId": "loudest-urgent-myth"
+        }
+      ],
+      "tags": ["triage"],
+      "source": "GENERATED",
+      "hash": "7b865941f4bf"
+    },
+    {
+      "id": "out-of-scope-reply",
+      "module": "ticket-handling",
+      "type": "term",
+      "difficulty": 3,
+      "criticality": 2,
+      "teach": {
+        "card": "When a request isn't covered by the client's agreement, say so plainly and offer a path: a quote, a referral, a scheduled project, or a quick pointer if your team allows it. A flat no ends the conversation; a path keeps the relationship.",
+        "why": "Customers don't know where the agreement's lines are, so a bare refusal feels arbitrary, while quietly doing uncovered work sets an expectation the team can't keep up."
+      },
+      "prompt": "A user asks you to fix their home printer, which their plan doesn't cover. Best reply?",
+      "answer": "Say it's not covered and offer a path",
+      "distractors": [
+        {
+          "text": "Say it's not covered and close the ticket",
+          "misconceptionId": "policy-first-myth"
+        },
+        {
+          "text": "Fix it quietly to keep them happy",
+          "misconceptionId": null
+        },
+        {
+          "text": "Walk them through the agreement's terms",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["scope"],
+      "source": "GENERATED",
+      "hash": "86c8b47fdc99"
+    },
+    {
+      "id": "vip-priority-myth",
+      "module": "ticket-handling",
+      "type": "misconception",
+      "difficulty": 1,
+      "criticality": 3,
+      "teach": {
+        "card": "Executives deserve great service, and sometimes their problems are genuinely urgent. But urgency comes from the situation, like a meeting in ten minutes, not from the title in the email signature.",
+        "why": "If title sets priority, an outage hitting a whole team can wait behind one leader's minor request, and the client pays for that in lost work."
+      },
+      "belief": "If an executive reports a problem, it's automatically the top priority.",
+      "truth": "Priority comes from impact and urgency; a leader's issue can be urgent, but the title alone doesn't make it so.",
+      "tags": ["triage"],
+      "source": "GENERATED",
+      "hash": "4ba6cba1fc27"
+    },
+    {
+      "id": "loudest-urgent-myth",
+      "module": "ticket-handling",
+      "type": "misconception",
+      "difficulty": 1,
+      "criticality": 2,
+      "teach": {
+        "card": "Upset callers deserve empathy, and you should give it. But the quiet email about a failing backup can matter far more than the furious call about a slow printer.",
+        "why": "Triage by volume rewards whoever pushes hardest and leaves quiet, high-impact problems sitting, which is how small issues become outages."
+      },
+      "belief": "The caller who sounds the most upset usually has the most urgent problem.",
+      "truth": "Emotion shows how the caller feels, not how big the problem is, so triage on impact and urgency.",
+      "tags": ["triage"],
+      "source": "GENERATED",
+      "hash": "22d3dddbbacf"
+    },
+    {
+      "id": "escalation-failure-myth",
+      "module": "ticket-handling",
+      "type": "misconception",
+      "difficulty": 2,
+      "criticality": 3,
+      "teach": {
+        "card": "Good engineers escalate early and cleanly, with notes on what they tried and ruled out. That's how a team fixes things faster than any one person could.",
+        "why": "Pride-driven delays cost the customer hours, and the longer you wait, the less time the next engineer has before the impact grows."
+      },
+      "belief": "Escalating a ticket means admitting you couldn't do your job.",
+      "truth": "Escalating at the right time is doing the job; sitting on a ticket you can't move is the real failure.",
+      "tags": ["escalation"],
+      "source": "GENERATED",
+      "hash": "8516a1b986f2"
+    },
+    {
+      "id": "no-news-myth",
+      "module": "ticket-handling",
+      "type": "misconception",
+      "difficulty": 2,
+      "criticality": 3,
+      "teach": {
+        "card": "A no-progress update is still worth sending. \"Still waiting on the vendor; I chased them this morning and will update you Thursday\" takes a minute to write and saves a frustrated follow-up call.",
+        "why": "Customers can't see your work, so a stretch of silence looks exactly like nobody is working the ticket, even when you are."
+      },
+      "belief": "If there's no progress on a ticket, there's no point sending an update.",
+      "truth": "An update with no progress still tells the customer you haven't forgotten them; silence reads as neglect.",
+      "tags": ["follow-through", "expectations"],
+      "source": "GENERATED",
+      "hash": "9d964f3ab3b7"
+    },
+    {
+      "id": "close-on-fix-myth",
+      "module": "ticket-handling",
+      "type": "misconception",
+      "difficulty": 1,
+      "criticality": 3,
+      "teach": {
+        "card": "Your test proves it works from your seat. The user's test proves it works where it matters. A quick confirmation call or message closes the loop.",
+        "why": "Many fixes depend on the user's own device, profile or habits, so a console-only check misses failures the user will hit the next morning."
+      },
+      "belief": "Once the fix works on your end, it's fine to close the ticket.",
+      "truth": "Close only after the user confirms it works for them, or after you've told them what you did and how to reopen.",
+      "tags": ["follow-through"],
+      "source": "GENERATED",
+      "hash": "aec6937337f5"
+    },
+    {
+      "id": "triage-priority",
+      "module": "ticket-handling",
+      "type": "category",
+      "difficulty": 2,
+      "criticality": 3,
+      "teach": {
+        "card": "Set priority from impact and urgency. P1 is business-stopping or a live security threat, and P2 means a person or team can't work. P3 is degraded or has a workaround; P4 is minor, or a request with no clock on it.",
+        "why": "Priority decides who waits, so getting it wrong either leaves a business stopped or pulls engineers off real emergencies for something that could wait."
+      },
+      "buckets": ["P1 Critical", "P2 High", "P3 Normal", "P4 Low"],
+      "items": [
+        {
+          "text": "Whole office can't get on the internet",
+          "bucket": "P1 Critical"
+        },
+        {
+          "text": "Ransom note on screen at the front desk PC",
+          "bucket": "P1 Critical"
+        },
+        {
+          "text": "Payroll app won't open, and payroll is due today",
+          "bucket": "P1 Critical",
+          "borderline": true
+        },
+        {
+          "text": "User typed their password into a phishing page",
+          "bucket": "P1 Critical",
+          "borderline": true
+        },
+        {
+          "text": "CEO laptop won't boot, board deck due in an hour",
+          "bucket": "P2 High",
+          "borderline": true
+        },
+        {
+          "text": "One remote user can't connect to the VPN",
+          "bucket": "P2 High"
+        },
+        {
+          "text": "Shared drive is read-only for the accounting team",
+          "bucket": "P2 High"
+        },
+        {
+          "text": "Main printer down, the backup printer works",
+          "bucket": "P3 Normal"
+        },
+        {
+          "text": "Outlook slow for one user but still usable",
+          "bucket": "P3 Normal"
+        },
+        {
+          "text": "New hire starts Monday and needs an account",
+          "bucket": "P3 Normal",
+          "borderline": true
+        },
+        {
+          "text": "Second monitor flickers now and then",
+          "bucket": "P4 Low"
+        },
+        {
+          "text": "Request for an ergonomic keyboard",
+          "bucket": "P4 Low"
+        }
+      ],
+      "tags": ["triage"],
+      "source": "GENERATED",
+      "hash": "ef12e00b2e32"
+    },
+    {
+      "id": "handle-escalate-schedule",
+      "module": "ticket-handling",
+      "type": "category",
+      "difficulty": 3,
+      "criticality": 2,
+      "teach": {
+        "card": "Handle now if you can resolve it on this contact; escalate if it needs more skill, access or speed than you have. Schedule anything that is planned work. Out of scope means the agreement doesn't cover it, so offer a path instead of a flat no.",
+        "why": "Routing wrong wastes engineer time, the scarcest thing on a service desk, and leaves customers waiting in the wrong line for work that could have been done now or planned properly."
+      },
+      "buckets": ["Handle now", "Escalate", "Schedule", "Out of scope"],
+      "items": [
+        {
+          "text": "Password reset for a locked-out user",
+          "bucket": "Handle now"
+        },
+        {
+          "text": "Add a user to a shared mailbox",
+          "bucket": "Handle now"
+        },
+        {
+          "text": "Explain the new sign-in prompt to a confused user",
+          "bucket": "Handle now"
+        },
+        {
+          "text": "Set up work email on a user's personal phone",
+          "bucket": "Handle now",
+          "borderline": true
+        },
+        {
+          "text": "Firewall down at the main office",
+          "bucket": "Escalate"
+        },
+        {
+          "text": "Account sending spam to the client's customers",
+          "bucket": "Escalate"
+        },
+        {
+          "text": "Printer still offline after your 30-minute time box",
+          "bucket": "Escalate",
+          "borderline": true
+        },
+        {
+          "text": "Laptop setup for a hire starting in two weeks",
+          "bucket": "Schedule"
+        },
+        {
+          "text": "Upgrade every PC to the new Office version",
+          "bucket": "Schedule"
+        },
+        {
+          "text": "Move a desk phone to a new office next Tuesday",
+          "bucket": "Schedule"
+        },
+        {
+          "text": "Fix the owner's Wi-Fi at home",
+          "bucket": "Out of scope",
+          "borderline": true
+        },
+        {
+          "text": "Build a new website for the bakery",
+          "bucket": "Out of scope"
+        }
+      ],
+      "tags": ["triage", "escalation", "scope"],
+      "source": "GENERATED",
+      "hash": "722b6fbf4db0"
+    },
+    {
+      "id": "new-ticket-intake",
+      "module": "ticket-handling",
+      "type": "sequence",
+      "difficulty": 2,
+      "criticality": 3,
+      "teach": {
+        "card": "Intake is where triage happens. Identify the caller, capture the problem, ask who's affected (impact) and what it's blocking (urgency), set priority from those answers, and finish by telling them what happens next.",
+        "why": "Priority set before asking about scope and deadlines is a guess, and a caller who leaves without a next step and a time will call back to ask."
+      },
+      "prompt": "Taking a new request",
+      "steps": [
+        "Confirm who's calling and their company",
+        "Get the problem in their own words",
+        "Ask who else is affected",
+        "Ask what deadline or work it's blocking",
+        "Set priority from impact and urgency",
+        "Tell them what happens next and when"
+      ],
+      "decoys": ["Set priority by how upset they sound", "Promise a fix time before you look"],
+      "tags": ["triage", "expectations"],
+      "source": "GENERATED",
+      "hash": "3c15f225b698"
+    },
+    {
+      "id": "closing-the-loop",
+      "module": "ticket-handling",
+      "type": "sequence",
+      "difficulty": 3,
+      "criticality": 3,
+      "teach": {
+        "card": "Closing the loop has two halves: with the customer (test, explain, set expectations) and for the team (notes, then close). Do the customer half while they're still on the line.",
+        "why": "Notes and closure written before the user has tested record a fix that may not be real, and anything skipped on the call becomes a follow-up the customer has to chase."
+      },
+      "prompt": "Closing the loop on a fixed ticket",
+      "steps": [
+        "Have the user test it while you're connected",
+        "Explain what was wrong in plain words",
+        "Say what to do if it comes back",
+        "Write resolution notes for the next engineer",
+        "Close the ticket and send the summary"
+      ],
+      "decoys": ["Close it first, then ask if it works", "Skip the notes if the fix was simple"],
+      "tags": ["follow-through"],
+      "source": "GENERATED",
+      "hash": "268b2258e9ab"
+    },
+    {
+      "id": "call-victor-exec-priority",
+      "module": "ticket-handling",
+      "type": "scenario",
+      "difficulty": 3,
+      "criticality": 3,
+      "teach": {
+        "card": "Executives often expect to jump the queue. Find the real deadline, give a specific time that meets it, and be straight about why you can't drop an outage. Most leaders respect a clear plan more than a yes.",
+        "why": "Caving to a title hurts the client with the bigger problem, and hiding behind process insults the leader; a direct plan that meets his actual deadline serves both."
+      },
+      "setup": "Victor, managing partner at Kessler & Moreau Law, calls wanting his new phone set up immediately. You're in the middle of a server outage that has another client's whole office down.",
+      "persona": {
+        "name": "Victor",
+        "mood": 45,
+        "style": "brisk and used to getting his way; respects directness, hates being handled"
+      },
+      "beats": [
+        {
+          "id": "demand",
+          "prompt": "Victor: \"I don't do queues. Set up my new phone now. I'm the managing partner.\"",
+          "choices": [
+            {
+              "text": "I want to get you sorted quickly, Victor. One question so I prioritize this right: is your old phone still getting email, or are you cut off right now?",
+              "quality": "good",
+              "moodDelta": 15,
+              "reply": "It works. I just want the new one running."
+            },
+            {
+              "text": "All tickets go in the same queue, sir, no matter who they're for. You're number fourteen right now, and we'll get to you in turn.",
+              "quality": "bad",
+              "moodDelta": -20,
+              "reply": "Number fourteen? Do you know who you're talking to?"
+            },
+            {
+              "text": "Let me see what's in the queue right now and how quickly we can get to it. Can you hold for just a moment while I check who on the team is free to take it?",
+              "quality": "neutral",
+              "moodDelta": 0,
+              "reply": "Make it quick."
+            }
+          ]
+        },
+        {
+          "id": "plan",
+          "prompt": "Victor: \"I fly to Chicago at six tonight, and I want the new phone with me.\"",
+          "choices": [
+            {
+              "text": "Then here's the plan: I'm finishing an urgent outage right now, and I'll call you at 2:00 to set it up together. About fifteen minutes, done well before your flight.",
+              "quality": "good",
+              "moodDelta": 15,
+              "reply": "Two o'clock. Fine, as long as it's done before I leave."
+            },
+            {
+              "text": "Since your old phone still works, this is a low-priority ticket. Someone will get to it within two business days, so you may need to travel with the old one.",
+              "quality": "bad",
+              "moodDelta": -20,
+              "reply": "Two business days? I just told you I'm flying tonight."
+            },
+            {
+              "text": "Understood, I'll get someone on it as soon as I can. I can't promise an exact time yet, but I'll make sure the team knows about your flight.",
+              "quality": "neutral",
+              "moodDelta": -5,
+              "reply": "\"As soon as you can\" isn't a time."
+            }
+          ]
+        },
+        {
+          "id": "pushback",
+          "prompt": "Victor: \"Two o'clock? Can't you just squeeze me in now?\"",
+          "choices": [
+            {
+              "text": "I hear you. Another client's office is completely down right now, and if it were your office, you'd want me staying on it. 2:00 is firm, and I'll be the one calling you.",
+              "quality": "good",
+              "moodDelta": 15,
+              "reply": "...Fair enough. Two o'clock, then."
+            },
+            {
+              "text": "Fine, I can pause the other client's outage and set up your phone right now instead. It shouldn't take long, and I'll go straight back to their office once you're all set.",
+              "quality": "bad",
+              "moodDelta": -10,
+              "reply": "You'd drop another client's outage for a phone? What would you do to mine?"
+            },
+            {
+              "text": "Sorry, that's just our process. Everyone gets scheduled in order, and 2:00 is the earliest slot I have available for anyone today.",
+              "quality": "bad",
+              "moodDelta": -15,
+              "reply": "I'm not interested in your process."
+            },
+            {
+              "text": "I'll see if anyone else on the team might be free a bit sooner and can get to you before then. Let me check around, and I'll let you know what I find out.",
+              "quality": "neutral",
+              "moodDelta": 5,
+              "reply": "Fine. Let me know."
+            }
+          ]
+        },
+        {
+          "id": "follow-through",
+          "prompt": "At 2:20 the new phone is working. Victor: \"Good. That was painless.\"",
+          "choices": [
+            {
+              "text": "Glad to hear it. Your old phone's still signed in, so I'll call Monday to wipe it once you're back. Safe flight.",
+              "quality": "good",
+              "moodDelta": 15,
+              "reply": "Monday works. Thanks for being straight with me earlier."
+            },
+            {
+              "text": "Great. Next time, though, please put in a ticket a few days ahead so the team can plan and schedule it properly for you.",
+              "quality": "bad",
+              "moodDelta": -10,
+              "reply": "I'll call when I need to call."
+            },
+            {
+              "text": "Glad it's all working now. Is there anything else at all I can help you with today before you head out to the airport?",
+              "quality": "neutral",
+              "moodDelta": 0,
+              "reply": "No. That's all."
+            }
+          ]
+        }
+      ],
+      "rubric": {
+        "goal": "Respect an executive's request while triaging honestly by impact and urgency",
+        "must": ["find out or acknowledge his real deadline", "give a specific time commitment"],
+        "should": [
+          "explain the priority call plainly, without citing process",
+          "follow up on loose ends like the old phone"
+        ],
+        "never": [
+          "drop a higher-impact issue because of his title",
+          "brush him off with queue numbers or \"that's our process\""
+        ]
+      },
+      "tags": ["triage", "expectations", "phone"],
+      "source": "GENERATED",
+      "hash": "6f28e4dfc255"
+    },
+    {
+      "id": "call-tasha-out-of-scope",
+      "module": "ticket-handling",
+      "type": "scenario",
+      "difficulty": 2,
+      "criticality": 2,
+      "teach": {
+        "card": "Out-of-scope requests are relationship moments. Be clear about what's covered, then offer a path (a quote, a referral, or a quick pointer if your team allows it) and give a time for the follow-up.",
+        "why": "A flat no makes the customer feel brushed off and a quiet yes creates an expectation of free work, so a clear boundary with a real option is the answer that holds up."
+      },
+      "setup": "Tasha, owner of Juniper Lane Bakery, calls about a shop issue you fix in minutes. Before hanging up, she asks for help with her home Wi-Fi, which the bakery's plan doesn't cover.",
+      "persona": {
+        "name": "Tasha",
+        "mood": 55,
+        "style": "friendly and chatty, assumes all IT is one thing"
+      },
+      "beats": [
+        {
+          "id": "ask",
+          "prompt": "Tasha: \"While I've got you, my Wi-Fi at home keeps dropping. Can you fix that too? You're my IT people!\"",
+          "choices": [
+            {
+              "text": "Glad you asked! Your home network isn't covered by the bakery's plan, but I can still help: I can send a quote for a visit, or a few things to try tonight. Which works?",
+              "quality": "good",
+              "moodDelta": 15,
+              "reply": "Oh, okay. Honestly, I didn't know there was a difference."
+            },
+            {
+              "text": "Sorry, home Wi-Fi isn't covered under the bakery's agreement, so we can't help with that one. You'd need to sort it out on your own.",
+              "quality": "bad",
+              "moodDelta": -15,
+              "reply": "Oh. Okay. I guess I'll figure it out myself."
+            },
+            {
+              "text": "Home Wi-Fi is really your internet provider's job, not ours, so that one's on them. I'd give them a call when you get home tonight and let them sort out whatever's wrong.",
+              "quality": "bad",
+              "moodDelta": -10,
+              "reply": "Oh. They'll just tell me to restart the router."
+            },
+            {
+              "text": "Hmm, I'm not sure if that's something we can do. Let me check with someone on the team and get back to you later today or tomorrow.",
+              "quality": "neutral",
+              "moodDelta": 0,
+              "reply": "Sure, whenever you get a chance."
+            }
+          ]
+        },
+        {
+          "id": "pushback",
+          "prompt": "Tasha: \"A quote? Seriously? It's probably five minutes for you.\"",
+          "choices": [
+            {
+              "text": "It might be! I'd just hate to promise five minutes and get stuck. I'll email you three things to try tonight, and the quote will be ready if they don't do the trick.",
+              "quality": "good",
+              "moodDelta": 15,
+              "reply": "Okay, that's fair. I'll try those first."
+            },
+            {
+              "text": "Rules are rules, unfortunately, and I don't make them. Anything outside the agreement needs a quote first, even if it's quick. That's just how it works.",
+              "quality": "bad",
+              "moodDelta": -20,
+              "reply": "Wow. Okay. I thought we were friends here."
+            },
+            {
+              "text": "Let me ask my manager if we can make an exception this once. I can't promise anything, but I'll check and call you back once I hear from them.",
+              "quality": "neutral",
+              "moodDelta": 0,
+              "reply": "Sure, if you think they'll say yes."
+            }
+          ]
+        },
+        {
+          "id": "follow-up",
+          "prompt": "Tasha: \"Fine, send me the tips. When should I expect them?\"",
+          "choices": [
+            {
+              "text": "They'll be in your inbox within the hour, along with the quote. I'll note it on your ticket so anyone here can pick it up if you call back.",
+              "quality": "good",
+              "moodDelta": 15,
+              "reply": "Perfect. You've been so helpful today."
+            },
+            {
+              "text": "Honestly, you could just search online for home Wi-Fi tips. There's tons out there, and it'll probably be quicker than waiting for my email.",
+              "quality": "bad",
+              "moodDelta": -15,
+              "reply": "Oh. I thought you were sending them."
+            },
+            {
+              "text": "I'll send them over to you later today when I get a chance. Keep an eye on your inbox, and let me know if anything in there doesn't make sense.",
+              "quality": "neutral",
+              "moodDelta": 0,
+              "reply": "Okay, thanks."
+            }
+          ]
+        }
+      ],
+      "rubric": {
+        "goal": "Handle an out-of-scope request by offering a path instead of a flat no",
+        "must": ["say clearly that it isn't covered", "offer at least one concrete option"],
+        "should": ["keep a warm tone that values the relationship", "give a specific time for the follow-up"],
+        "never": [
+          "refuse with only \"it's not covered\" or \"rules are rules\"",
+          "quietly do uncovered work off the record"
+        ]
+      },
+      "tags": ["scope", "follow-through", "phone"],
+      "source": "GENERATED",
+      "hash": "1d57498a32bc"
+    },
+    {
+      "id": "flawed-resolution-note",
+      "module": "ticket-handling",
+      "type": "flawed_example",
+      "difficulty": 2,
+      "criticality": 3,
+      "teach": {
+        "card": "This resolution note is visible to the client. Find what's wrong with it, both for the customer reading it and for the next engineer who picks up a repeat.",
+        "why": "A resolution note serves two audiences: the client sees how you talk about their people, and the next engineer needs enough detail to stop the problem recurring."
+      },
+      "artifact": "Resolved. User locked out again, wrong password as usual. Reset it and closed the ticket. No further action needed.",
+      "flaws": [
+        {
+          "span": "wrong password as usual",
+          "issue": "Mocks the user in a note the client can read. State what happened neutrally."
+        },
+        {
+          "span": "locked out again",
+          "issue": "A repeat lockout is a pattern. Check and note the cause (an old phone or saved password) or flag it for follow-up."
+        },
+        {
+          "span": "Reset it and closed the ticket.",
+          "issue": "Closed without confirming the user could actually sign in afterward."
+        },
+        {
+          "span": "No further action needed.",
+          "issue": "Gives the next engineer nothing to go on. Say what you checked and what to watch for if it recurs."
+        }
+      ],
+      "tags": ["follow-through", "notes"],
+      "source": "GENERATED",
+      "hash": "905de67842d5"
+    }
+  ]
+}

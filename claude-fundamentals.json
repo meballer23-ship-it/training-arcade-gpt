@@ -1,0 +1,2242 @@
+{
+  "schema": 1,
+  "id": "claude-fundamentals",
+  "title": "Claude Fundamentals",
+  "version": "1.1.0",
+  "forgedAt": "2026-11-06",
+  "sources": ["Claude Fundamentals I-III content pack"],
+  "modules": [
+    {
+      "id": "cf-beginner",
+      "title": "Beginner: How Claude Thinks",
+      "order": 1,
+      "intro": "Start here. This level covers what Claude actually does when it answers: it generates instead of looking things up, it can be confidently wrong, and the same prompt can come back different. You'll also learn how a long chat fills up and the four ways to catch a hallucination.",
+      "boss": "The Confident Hallucination"
+    },
+    {
+      "id": "cf-intermediate",
+      "title": "Intermediate: Briefing Claude Well",
+      "order": 2,
+      "intro": "You know how Claude thinks; now get better work out of it. This level covers iterating instead of starting over, the RCTCO briefing, choosing a model and effort level, front-loading Research mode, and Projects that hold a standing brief so you only explain yourself once.",
+      "boss": "The Twenty-Minute Detour"
+    },
+    {
+      "id": "cf-advanced",
+      "title": "Advanced: From Help to Do",
+      "order": 3,
+      "intro": "Now Claude does the work instead of describing it. This level covers what connectors can reach, Claude in Chrome and the Office add-ins, Claude Design, Cowork's task loop and folder containment, scheduled tasks, and Skills that teach Claude your process once. Expect judgment calls about safety and oversight.",
+      "boss": "The Runaway Task"
+    }
+  ],
+  "atoms": [
+    {
+      "id": "cf-generates-not-retrieves",
+      "module": "cf-beginner",
+      "type": "term",
+      "difficulty": 1,
+      "criticality": 3,
+      "teach": {
+        "card": "Claude was trained on a huge amount of human writing and learned patterns in language and ideas, not a table of facts. When you ask something, it builds a fresh response that never existed before you asked. As the session put it, Claude does not retrieve, it generates.",
+        "why": "Answers that are built rather than fetched can read perfectly and still be wrong, which is why checking keeps coming up at every level of this course."
+      },
+      "prompt": "How does Claude come up with an answer to your question?",
+      "answer": "It generates a new answer each time",
+      "distractors": [
+        {
+          "text": "It looks up a stored answer",
+          "misconceptionId": "cf-looks-it-up-myth"
+        },
+        {
+          "text": "It copies the top search result",
+          "misconceptionId": null
+        },
+        {
+          "text": "It reads from a database of facts",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["how-it-works"],
+      "source": "Claude Fundamentals I-III content pack, sections 1.2 and 1.3",
+      "hash": "f4a8c1c3f2dc"
+    },
+    {
+      "id": "cf-uses-a-search-engine",
+      "module": "cf-beginner",
+      "type": "term",
+      "difficulty": 2,
+      "criticality": 2,
+      "teach": {
+        "card": "Most of a model's core knowledge was built in during training, so it stops at some point. For newer information Claude runs a web search, then writes its answer from what it read. Claude uses a search engine; it is not one.",
+        "why": "Recent facts come from pages Claude just read and summarized, so asking for its sources lets you check them yourself."
+      },
+      "prompt": "You ask Claude about news from last week. Where does that newer information come from?",
+      "answer": "A web search Claude runs to add to it",
+      "distractors": [
+        {
+          "text": "A stored copy of every news page",
+          "misconceptionId": "cf-looks-it-up-myth"
+        },
+        {
+          "text": "Its training already covers last week",
+          "misconceptionId": null
+        },
+        {
+          "text": "Nowhere, since it can't discuss news",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["how-it-works"],
+      "source": "Claude Fundamentals I-III content pack, section 1.2",
+      "hash": "4baa5aefd38f"
+    },
+    {
+      "id": "cf-autocomplete-on-steroids",
+      "module": "cf-beginner",
+      "type": "term",
+      "difficulty": 1,
+      "criticality": 2,
+      "teach": {
+        "card": "Claude predicts the most useful next word or idea from your input. It completes the conversation, not just the sentence: when someone asks a question an answer usually follows, so Claude supplies one. Think of a well-read colleague who can synthesize on demand and can also be confidently wrong.",
+        "why": "Seeing Claude as a predictor explains why an answer always comes back, even when it has nothing solid to base one on."
+      },
+      "prompt": "The session called Claude \"autocomplete on steroids.\" What does that describe?",
+      "answer": "Predicting how the conversation continues",
+      "distractors": [
+        {
+          "text": "Fetching the closest saved answer",
+          "misconceptionId": "cf-looks-it-up-myth"
+        },
+        {
+          "text": "Finishing words as you type them",
+          "misconceptionId": null
+        },
+        {
+          "text": "Repeating phrases from its training",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["how-it-works"],
+      "source": "Claude Fundamentals I-III content pack, section 1.3",
+      "hash": "2df2f92bd87e"
+    },
+    {
+      "id": "cf-hallucination",
+      "module": "cf-beginner",
+      "type": "term",
+      "difficulty": 1,
+      "criticality": 3,
+      "teach": {
+        "card": "A hallucination is incorrect information stated with complete confidence. It isn't a glitch; it's a byproduct of predicting plausible-sounding text instead of retrieving a verified fact. They show up most in obscure topics, citations, statistics, and exact dates and numbers.",
+        "why": "Because a hallucination reads exactly like a correct answer, the only way to catch one is to check it, never to judge by how it sounds."
+      },
+      "prompt": "In AI terms, what is a hallucination?",
+      "answer": "Wrong information stated with confidence",
+      "distractors": [
+        {
+          "text": "Garbled text that's easy to spot",
+          "misconceptionId": "cf-polished-is-correct-myth"
+        },
+        {
+          "text": "Claude refusing to answer at all",
+          "misconceptionId": null
+        },
+        {
+          "text": "A picture Claude invents on purpose",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["verification"],
+      "source": "Claude Fundamentals I-III content pack, section 1.5",
+      "hash": "afb27f8e32df"
+    },
+    {
+      "id": "cf-fresh-chat-check",
+      "module": "cf-beginner",
+      "type": "term",
+      "difficulty": 2,
+      "criticality": 3,
+      "teach": {
+        "card": "Start a new chat, paste in the answer, and ask Claude to find the errors. Chats don't share memory by default, so the new chat checks the work without knowing it wrote it. The other three checks: ask for sources and verify them, ask how confident it is, and cross-reference stats and dates yourself.",
+        "why": "The original chat is anchored on what it already said, while a fresh chat reads the answer cold, the way a second reviewer would."
+      },
+      "prompt": "Which hallucination check uses Claude to check Claude?",
+      "answer": "Ask a fresh chat to find the errors",
+      "distractors": [
+        {
+          "text": "Reread it, since errors sound off",
+          "misconceptionId": "cf-polished-is-correct-myth"
+        },
+        {
+          "text": "Ask the same chat to say it again",
+          "misconceptionId": null
+        },
+        {
+          "text": "Ask it to rewrite the answer formally",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["verification"],
+      "source": "Claude Fundamentals I-III content pack, section 1.5",
+      "hash": "8f640256f499"
+    },
+    {
+      "id": "cf-jagged-frontier",
+      "module": "cf-beginner",
+      "type": "term",
+      "difficulty": 3,
+      "criticality": 2,
+      "teach": {
+        "card": "The jagged frontier is the uneven edge of AI capability. Claude can be strong at work that's hard for people and still trip on something simple, like counting the r's in strawberry. Test it on your own use cases instead of assuming what should be easy.",
+        "why": "Trust earned on impressive results spills onto simple tasks nobody thinks to check, which is exactly where the uneven edge shows up."
+      },
+      "prompt": "Claude just aced a hard analysis for you. How should you treat its answer to a simple question?",
+      "answer": "Still test it; one skill doesn't predict another",
+      "distractors": [
+        {
+          "text": "Trust it, since easy tasks are safer",
+          "misconceptionId": "cf-easy-is-safe-myth"
+        },
+        {
+          "text": "Skip review; it already proved itself",
+          "misconceptionId": null
+        },
+        {
+          "text": "Check it only if it looks odd",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["verification"],
+      "source": "Claude Fundamentals I-III content pack, section 1.4",
+      "hash": "b74ea9b235ee"
+    },
+    {
+      "id": "cf-probabilistic",
+      "module": "cf-beginner",
+      "type": "term",
+      "difficulty": 2,
+      "criticality": 2,
+      "teach": {
+        "card": "Claude picks from a range of plausible responses each time, so the same prompt can return different but valid outputs. That variety helps brainstorming and drafting. It hurts structured work like data extraction and template filling, where you want the same shape every time.",
+        "why": "Once you know variation is built in, the fix is clear: tighter prompts or standing project instructions, or a non-AI automation when output must be identical."
+      },
+      "prompt": "You ran the same prompt twice and got two different, valid answers. Why?",
+      "answer": "Claude is probabilistic by design",
+      "distractors": [
+        {
+          "text": "It searched different sources each time",
+          "misconceptionId": "cf-looks-it-up-myth"
+        },
+        {
+          "text": "The first answer was a hallucination",
+          "misconceptionId": null
+        },
+        {
+          "text": "Your usage limit switched the model",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["how-it-works"],
+      "source": "Claude Fundamentals I-III content pack, section 1.6",
+      "hash": "76ea145e65a9"
+    },
+    {
+      "id": "cf-context-window",
+      "module": "cf-beginner",
+      "type": "term",
+      "difficulty": 1,
+      "criticality": 2,
+      "teach": {
+        "card": "The context window is everything Claude can remember in the current chat, measured in tokens: a word or part of a word, counting what you send and what Claude sends. When it fills, Claude compacts the chat and minor details can drop out. Being able to scroll back to text doesn't mean Claude still has it.",
+        "why": "Knowing the window has a limit tells you when to repeat a key detail, instead of assuming Claude still has it."
+      },
+      "prompt": "What is Claude's context window?",
+      "answer": "Everything it can remember in this chat",
+      "distractors": [
+        {
+          "text": "Every message you can still scroll to",
+          "misconceptionId": "cf-scrollback-memory-myth"
+        },
+        {
+          "text": "Your saved memory across all chats",
+          "misconceptionId": null
+        },
+        {
+          "text": "The box where you type your prompt",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["usage"],
+      "source": "Claude Fundamentals I-III content pack, section 1.9",
+      "hash": "0d1525d109b3"
+    },
+    {
+      "id": "cf-looks-it-up-myth",
+      "module": "cf-beginner",
+      "type": "misconception",
+      "difficulty": 1,
+      "criticality": 3,
+      "teach": {
+        "card": "A search engine hands you pages that already exist. Claude writes something new every time, and when it needs recent information it searches, reads, and still writes the answer itself. That's why its answers can mix solid facts with confident guesses.",
+        "why": "If you think Claude fetches stored facts, you'll trust its specifics the way you'd trust a source page, and miss the ones it made up."
+      },
+      "belief": "Claude looks answers up, the way Google finds a page.",
+      "truth": "Claude writes every answer from learned patterns and uses web search only to add newer facts.",
+      "tags": ["how-it-works"],
+      "source": "Claude Fundamentals I-III content pack, section 1.2",
+      "hash": "5b24ac091089"
+    },
+    {
+      "id": "cf-polished-is-correct-myth",
+      "module": "cf-beginner",
+      "type": "misconception",
+      "difficulty": 1,
+      "criticality": 3,
+      "teach": {
+        "card": "Claude writes smoothly whether the facts are right or not, because it predicts plausible text. A made-up statistic reads just like a real one. Treat its factual output like a capable new hire's first draft: worth a review.",
+        "why": "Polish is the signal people trust by instinct, and it says nothing about whether a statistic, date or citation is real."
+      },
+      "belief": "If Claude's answer is confident and well written, it's correct.",
+      "truth": "Fluency isn't the same as accuracy. Claude can be confidently wrong, so verify anything that matters.",
+      "tags": ["verification"],
+      "source": "Claude Fundamentals I-III content pack, sections 1.3 and 1.5",
+      "hash": "fa37efb6b1b7"
+    },
+    {
+      "id": "cf-easy-is-safe-myth",
+      "module": "cf-beginner",
+      "type": "misconception",
+      "difficulty": 2,
+      "criticality": 2,
+      "teach": {
+        "card": "Being impressed by Claude doesn't mean it has no gaps. Some tasks that are hard for people are trivial for it, and some simple ones still trip it up. Capability in one area doesn't predict capability in another.",
+        "why": "The tasks people stop checking are the easy ones, so a surprise error there slips straight into finished work."
+      },
+      "belief": "If Claude handles hard tasks well, it's fine on the easy ones.",
+      "truth": "Capability is jagged: Claude can ace hard work and trip on simple tasks, so test it on yours.",
+      "tags": ["verification"],
+      "source": "Claude Fundamentals I-III content pack, section 1.4",
+      "hash": "0409ed513ee0"
+    },
+    {
+      "id": "cf-scrollback-memory-myth",
+      "module": "cf-beginner",
+      "type": "misconception",
+      "difficulty": 2,
+      "criticality": 2,
+      "teach": {
+        "card": "When the context window fills, Claude compresses the chat, and like compressing video, detail is lost. The old messages stay on your screen even after Claude has let go of them. If an early instruction matters, say it again.",
+        "why": "Seeing the old message on screen makes it feel safe to rely on, so people don't repeat a key rule and get answers that quietly ignore it."
+      },
+      "belief": "If I can still scroll back to it, Claude still remembers it.",
+      "truth": "After a long chat is compacted, Claude may have dropped the detail, so restate anything important.",
+      "tags": ["usage"],
+      "source": "Claude Fundamentals I-III content pack, section 1.9",
+      "hash": "5c541aba3d6e"
+    },
+    {
+      "id": "cf-catch-a-hallucination",
+      "module": "cf-beginner",
+      "type": "category",
+      "difficulty": 2,
+      "criticality": 3,
+      "teach": {
+        "card": "Sort each move by whether it actually helps you catch a wrong answer. Checking sources, asking about confidence, a fresh-chat review and cross-referencing all work. Rewording, repeating or judging by tone don't.",
+        "why": "Moves that feel like checking, such as having the same chat repeat its answer, give a confident model another chance to repeat its mistake."
+      },
+      "buckets": ["Helps catch it", "Doesn't help"],
+      "items": [
+        {
+          "text": "Ask for sources, then confirm they exist",
+          "bucket": "Helps catch it"
+        },
+        {
+          "text": "Ask: How confident are you in this?",
+          "bucket": "Helps catch it"
+        },
+        {
+          "text": "Have a fresh chat look for errors",
+          "bucket": "Helps catch it"
+        },
+        {
+          "text": "Cross-check stats, dates and citations",
+          "bucket": "Helps catch it"
+        },
+        {
+          "text": "Add: If you're unsure, say so",
+          "bucket": "Helps catch it",
+          "borderline": true
+        },
+        {
+          "text": "Trust it because it reads well",
+          "bucket": "Doesn't help"
+        },
+        {
+          "text": "Ask the same chat to repeat it",
+          "bucket": "Doesn't help",
+          "borderline": true
+        },
+        {
+          "text": "Ask it to rewrite the answer as bullets",
+          "bucket": "Doesn't help"
+        },
+        {
+          "text": "Tell it to be more accurate next time",
+          "bucket": "Doesn't help"
+        },
+        {
+          "text": "Switch to a faster model and rerun",
+          "bucket": "Doesn't help"
+        }
+      ],
+      "tags": ["verification"],
+      "source": "Claude Fundamentals I-III content pack, sections 1.5 and 1.15",
+      "hash": "9cb2f4ac356e"
+    },
+    {
+      "id": "cf-beginner-fact-or-myth",
+      "module": "cf-beginner",
+      "type": "category",
+      "difficulty": 1,
+      "criticality": 2,
+      "teach": {
+        "card": "Sort each statement about Claude's settings, limits and reach as fact or myth. Preferences, memory and connectors shape what Claude does. Voice settings don't change how it writes, and asking in chat can't change its temperature.",
+        "why": "Each myth leads to a wasted fix or a wrong assumption, like asking a chat to change temperature or thinking Claude sees data you can't."
+      },
+      "buckets": ["Fact", "Myth"],
+      "items": [
+        {
+          "text": "Personal preferences are added to every new chat",
+          "bucket": "Fact"
+        },
+        {
+          "text": "You can override preferences inside a chat",
+          "bucket": "Fact",
+          "borderline": true
+        },
+        {
+          "text": "Memory is visible and editable in settings",
+          "bucket": "Fact"
+        },
+        {
+          "text": "Voice settings change how Claude writes",
+          "bucket": "Myth"
+        },
+        {
+          "text": "Asking in chat changes Claude's temperature",
+          "bucket": "Myth"
+        },
+        {
+          "text": "Claude can make photorealistic images",
+          "bucket": "Myth"
+        },
+        {
+          "text": "Claude makes charts, diagrams and mockups",
+          "bucket": "Fact"
+        },
+        {
+          "text": "Claude carries bias from its training data",
+          "bucket": "Fact"
+        },
+        {
+          "text": "Asking for a steel-man helps offset its bias",
+          "bucket": "Fact"
+        },
+        {
+          "text": "Being impressive means Claude has no gaps",
+          "bucket": "Myth"
+        },
+        {
+          "text": "Claude can see all company data",
+          "bucket": "Myth",
+          "borderline": true
+        },
+        {
+          "text": "Dictation turns your speech into prompt text",
+          "bucket": "Fact"
+        }
+      ],
+      "tags": ["settings"],
+      "source": "Claude Fundamentals I-III content pack, sections 1.8, 1.10, 1.18 and 1.20",
+      "hash": "183bb98753b2"
+    },
+    {
+      "id": "cf-fresh-chat-fact-check",
+      "module": "cf-beginner",
+      "type": "sequence",
+      "difficulty": 2,
+      "criticality": 3,
+      "teach": {
+        "card": "A fresh chat doesn't share memory with the one that wrote the answer, so it reviews the text cold. Paste it in, ask for errors, then confirm whatever it flags. It works in Chat, Cowork and Code.",
+        "why": "Skipping the fresh chat, or telling it who wrote the answer, brings back the very bias the check is meant to remove."
+      },
+      "prompt": "Fact-checking with a fresh chat",
+      "steps": [
+        "Copy the answer you want checked",
+        "Paste it into a brand-new chat",
+        "Ask Claude to find any errors",
+        "Verify what it flags yourself"
+      ],
+      "decoys": ["Ask the original chat if it's sure", "Tell it which chat wrote the answer"],
+      "tags": ["verification"],
+      "source": "Claude Fundamentals I-III content pack, section 1.5",
+      "hash": "0a00c0a98101"
+    },
+    {
+      "id": "cf-long-chat-fills-up",
+      "module": "cf-beginner",
+      "type": "sequence",
+      "difficulty": 1,
+      "criticality": 2,
+      "teach": {
+        "card": "Every message, yours and Claude's, uses tokens in the context window. When it's full, Claude compacts the chat to make room, and small details can drop out. The fix is simple: remind Claude of any detail that matters.",
+        "why": "Knowing the order of events tells you when an ignored instruction is a memory problem, not Claude refusing to follow you."
+      },
+      "prompt": "What happens as a long chat fills up",
+      "steps": [
+        "Each message adds tokens to the context",
+        "The context window fills up",
+        "Claude compacts the conversation",
+        "Minor details may be dropped",
+        "You restate anything that matters"
+      ],
+      "decoys": ["Claude deletes your earlier messages"],
+      "tags": ["usage"],
+      "source": "Claude Fundamentals I-III content pack, section 1.9",
+      "hash": "716b33dfb7d9"
+    },
+    {
+      "id": "cf-call-wendell-made-up-source",
+      "module": "cf-beginner",
+      "type": "scenario",
+      "difficulty": 3,
+      "criticality": 3,
+      "teach": {
+        "card": "When a client gets burned by a made-up fact, explain why it happened without blame, then give them a check they can use today. Sources they click through, a fresh-chat review, and a final check on numbers turn Claude back into a useful first-draft tool.",
+        "why": "A caller who only hears that AI makes mistakes either stops using the tool or keeps getting burned; one concrete habit fixes both."
+      },
+      "setup": "Wendell, office manager at Larkspur Family Dental, calls the help desk. Claude gave him a statistic and a source for the patient newsletter, and his boss just found that the source doesn't exist.",
+      "persona": {
+        "name": "Wendell",
+        "mood": 40,
+        "style": "embarrassed and irritated, thinks the tool is broken"
+      },
+      "beats": [
+        {
+          "id": "opening",
+          "prompt": "Wendell: \"Your AI made up a study and I put it in our patient newsletter. Is it broken?\"",
+          "choices": [
+            {
+              "text": "That's rough, especially in print. It isn't broken: Claude writes answers instead of looking them up, so it can state a made-up source with confidence. Let's stop that happening again.",
+              "quality": "good",
+              "moodDelta": 15,
+              "reply": "So it's not just me. Okay, how do I keep that from happening?"
+            },
+            {
+              "text": "Honestly, every AI tool does this now and then, and the newsletter's already printed. The real lesson is that whoever approved it should have checked the study before it went out to patients.",
+              "quality": "bad",
+              "moodDelta": -20,
+              "reply": "Great. So now it's my fault."
+            },
+            {
+              "text": "Sorry about that. Hallucinations do happen with these tools from time to time. Which model were you using when it gave you the study, and do you still have that chat open?",
+              "quality": "neutral",
+              "moodDelta": 0,
+              "reply": "No idea. Whatever the default is?"
+            }
+          ]
+        },
+        {
+          "id": "verify",
+          "prompt": "Wendell: \"So how am I supposed to trust anything it writes?\"",
+          "choices": [
+            {
+              "text": "Treat it like a first draft from a new hire. Ask it to cite its sources, then click through and confirm each one says what Claude claims. For anything patients will read, check the numbers too.",
+              "quality": "good",
+              "moodDelta": 15,
+              "reply": "A first draft, not the final word. That I can work with."
+            },
+            {
+              "text": "Add a line to the top of your prompt telling it to be 100% accurate and never invent sources. Once it has that instruction, it sticks to real facts, so you won't need to check its work afterward.",
+              "quality": "bad",
+              "moodDelta": -15,
+              "reply": "If that worked, wouldn't it just do it already?"
+            },
+            {
+              "text": "It's usually right, so I wouldn't worry much about everyday things like emails and notes. Just be a little more careful with anything that seems surprising or oddly specific.",
+              "quality": "neutral",
+              "moodDelta": 0,
+              "reply": "Careful how, exactly?"
+            }
+          ]
+        },
+        {
+          "id": "fresh-chat",
+          "prompt": "Wendell: \"Is there a faster way than checking every line myself?\"",
+          "choices": [
+            {
+              "text": "One trick: paste the draft into a brand-new chat and ask Claude to find the errors. The new chat doesn't know it wrote it, so it checks with fresh eyes. Then confirm what it flags.",
+              "quality": "good",
+              "moodDelta": 15,
+              "reply": "Use Claude to check Claude. I like that."
+            },
+            {
+              "text": "Sure: in that same chat, ask Claude to reread its answer and double-check every fact. If it reads the draft back and doesn't change anything, you can trust it's accurate and send it to print.",
+              "quality": "bad",
+              "moodDelta": -15,
+              "reply": "It wrote the fake study. Why would it catch it now?"
+            },
+            {
+              "text": "Not really, I'm afraid. The only safe way is to read every line yourself against the original sources, and maybe have a coworker read it too before it goes anywhere.",
+              "quality": "neutral",
+              "moodDelta": -5,
+              "reply": "That kind of defeats the purpose."
+            }
+          ]
+        },
+        {
+          "id": "close",
+          "prompt": "Wendell: \"Thanks. Now I have to explain this to my boss.\"",
+          "choices": [
+            {
+              "text": "Tell them Claude got the draft most of the way there, and the fix is a quick check before anything goes out: if it matters, verify it. I'll note this on your ticket in case they want a walkthrough.",
+              "quality": "good",
+              "moodDelta": 10,
+              "reply": "That I can explain. Thanks for not making me feel dumb."
+            },
+            {
+              "text": "I'd tell them you've stopped using it for anything that matters. It's the safest story, and nobody has to check its work again because it won't be writing anything important anymore.",
+              "quality": "bad",
+              "moodDelta": -10,
+              "reply": "Then why are we paying for it?"
+            },
+            {
+              "text": "Sure, that makes sense. Let me know if they have any questions about what happened, and I can join a call. Is there anything else I can help you with today while I have you?",
+              "quality": "neutral",
+              "moodDelta": 0,
+              "reply": "No, I guess that's it."
+            }
+          ]
+        }
+      ],
+      "rubric": {
+        "goal": "Explain why Claude invented a source and give the caller a quick way to catch it next time",
+        "must": [
+          "explain that Claude generates answers and can be confidently wrong",
+          "give at least one concrete way to verify, such as checking the cited sources"
+        ],
+        "should": [
+          "acknowledge the embarrassment without blame",
+          "mention using a fresh chat to check the answer"
+        ],
+        "never": ["blame the caller for trusting the tool", "claim Claude never makes things up"]
+      },
+      "tags": ["verification", "phone"],
+      "source": "Claude Fundamentals I-III content pack, sections 1.5 and 1.7",
+      "hash": "30e015080510"
+    },
+    {
+      "id": "cf-chat-odette-lost-rule",
+      "module": "cf-beginner",
+      "type": "scenario",
+      "difficulty": 2,
+      "criticality": 2,
+      "teach": {
+        "card": "When Claude seems to forget or contradict itself, the cause is usually the context window or built-in variety, not a fault. Explain which one it is, then give the matching fix: restate the rule, move it into preferences, or tighten the prompt.",
+        "why": "Calling normal behavior a bug sends people chasing a fix that doesn't exist, while the real fixes take seconds."
+      },
+      "setup": "Odette, a project coordinator who is new to Claude, messages you on Teams. Two hours into one long chat, Claude has stopped following the report template she set at the start.",
+      "persona": {
+        "name": "Odette",
+        "mood": 50,
+        "style": "puzzled and a little impatient, new to Claude"
+      },
+      "beats": [
+        {
+          "id": "lost-rule",
+          "prompt": "Odette: \"I told Claude at the start to use our report template. Now it ignores it, and it's right there if I scroll up!\"",
+          "choices": [
+            {
+              "text": "In a long chat Claude compacts older messages to make room, and details can drop out even though you can still see them. Paste the template rule in again and it should pick it back up.",
+              "quality": "good",
+              "moodDelta": 15,
+              "reply": "Oh. So what's on my screen isn't what it remembers."
+            },
+            {
+              "text": "That sounds like the chat got corrupted; long chats do that sometimes. I'd delete this one, open a ticket so we can look at your account, and start over from scratch so the template rule takes.",
+              "quality": "bad",
+              "moodDelta": -15,
+              "reply": "Start over? I have two hours of work in here."
+            },
+            {
+              "text": "That's strange, it should still have it since the rule is right there in the chat. Try asking it again, maybe a bit more firmly this time, and see whether it follows your report template now.",
+              "quality": "neutral",
+              "moodDelta": 0,
+              "reply": "Ask it what? It just keeps doing it wrong."
+            }
+          ]
+        },
+        {
+          "id": "make-it-stick",
+          "prompt": "Odette: \"Can I make that rule stick so I don't have to keep reminding it?\"",
+          "choices": [
+            {
+              "text": "If it's a rule for every chat, put it in your personal preferences in Settings; those get added to the start of each new chat. In one long job, restate key rules now and then.",
+              "quality": "good",
+              "moodDelta": 15,
+              "reply": "Preferences for the always-rules. Got it."
+            },
+            {
+              "text": "Type the rule in all caps and put IMPORTANT in front of it. Claude gives capitalized text extra weight, so it'll remember the rule for the rest of the chat without you having to remind it.",
+              "quality": "bad",
+              "moodDelta": -10,
+              "reply": "I don't think yelling at it is the fix."
+            },
+            {
+              "text": "Not really, unfortunately. That's just how these tools work right now, so you'll have to keep reminding it every time you notice it drifting away from what you asked it to do.",
+              "quality": "neutral",
+              "moodDelta": -5,
+              "reply": "That's annoying."
+            }
+          ]
+        },
+        {
+          "id": "different-answer",
+          "prompt": "Odette: \"Also, I re-ran the same prompt and got a different summary. Is that a bug too?\"",
+          "choices": [
+            {
+              "text": "Not a bug. Claude picks from a range of plausible answers, so the same prompt can come back different. For a report that has to look the same every time, spell out the exact format in the prompt.",
+              "quality": "good",
+              "moodDelta": 15,
+              "reply": "Looser for ideas, tighter for reports. Makes sense."
+            },
+            {
+              "text": "Yes, that's a known bug. Ask Claude to set its temperature to zero at the start of the chat, and from then on the same prompt will always give you exactly the same summary back.",
+              "quality": "bad",
+              "moodDelta": -15,
+              "reply": "I tried. It said it can't change that from a chat."
+            },
+            {
+              "text": "Yeah, it does that sometimes. I wouldn't read too much into it: as long as both summaries look right to you, just pick whichever one you like better and use that one for the report.",
+              "quality": "neutral",
+              "moodDelta": 0,
+              "reply": "Okay, but which summary is right?"
+            }
+          ]
+        }
+      ],
+      "rubric": {
+        "goal": "Explain why Claude dropped an early instruction and how to keep key rules in place",
+        "must": [
+          "explain that long chats get compacted and early details can drop out",
+          "give a concrete fix such as restating the rule or using personal preferences"
+        ],
+        "should": [
+          "explain that different answers to the same prompt are by design",
+          "suggest a tighter prompt when output must be consistent"
+        ],
+        "never": ["say Claude is broken", "claim temperature can be changed by asking in chat"]
+      },
+      "tags": ["usage", "settings"],
+      "source": "Claude Fundamentals I-III content pack, sections 1.6, 1.8 and 1.9",
+      "hash": "163757cf307b"
+    },
+    {
+      "id": "cf-real-skill-iteration",
+      "module": "cf-intermediate",
+      "type": "term",
+      "difficulty": 1,
+      "criticality": 2,
+      "teach": {
+        "card": "Prompting is a conversation, not a search bar. Start in plain English, treat the first output as a starting point, then give feedback, narrow the scope and ask for revisions. Stuck? Ask Claude to interview you one question at a time until it can improve your prompt.",
+        "why": "People who think prompting is a special craft either never start or keep rewriting from scratch, when steering the draft they already have gets there faster."
+      },
+      "prompt": "According to the session, what's the real skill in prompting?",
+      "answer": "Iterating on the output you get",
+      "distractors": [
+        {
+          "text": "Mastering prompt-engineering tricks",
+          "misconceptionId": "cf-prompt-engineer-myth"
+        },
+        {
+          "text": "Writing one perfect, long prompt",
+          "misconceptionId": null
+        },
+        {
+          "text": "Memorizing every settings menu",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["prompting"],
+      "source": "Claude Fundamentals I-III content pack, sections 1.12 and 1.14",
+      "hash": "d73a2dd44972"
+    },
+    {
+      "id": "cf-when-to-use-rctco",
+      "module": "cf-intermediate",
+      "type": "term",
+      "difficulty": 2,
+      "criticality": 2,
+      "teach": {
+        "card": "RCTCO briefs Claude the way you'd brief a new employee before an important task: Role, Context, Task, Constraints, Output format. Start in plain English, and add this structure when the output isn't right. Workflows, Cowork tasks, skills and research runs are where detailed briefs pay off most.",
+        "why": "Using the full framework on quick questions slows you down, while skipping it on complex work leaves Claude guessing at what you want."
+      },
+      "prompt": "When should you reach for the full RCTCO prompt framework?",
+      "answer": "When a simple ask isn't getting results",
+      "distractors": [
+        {
+          "text": "On every prompt, however simple",
+          "misconceptionId": "cf-prompt-engineer-myth"
+        },
+        {
+          "text": "Only when you want an image back",
+          "misconceptionId": null
+        },
+        {
+          "text": "Only inside Research mode",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["prompting"],
+      "source": "Claude Fundamentals I-III content pack, sections 1.13 and 1.16",
+      "hash": "b354946e7988"
+    },
+    {
+      "id": "cf-lead-with-the-task",
+      "module": "cf-intermediate",
+      "type": "term",
+      "difficulty": 2,
+      "criticality": 2,
+      "teach": {
+        "card": "Burying the ask is one of the most common prompting mistakes. Put the request first, then the background, like a newspaper headline. Include at least a task and context, and give Claude permission to say it's unsure rather than guess.",
+        "why": "Leading with the ask tells Claude what all the background is for, so the details shape the answer instead of burying it."
+      },
+      "prompt": "Your prompt is a wall of background with the actual request at the very end. What's the fix?",
+      "answer": "Lead with the task, then the details",
+      "distractors": [
+        {
+          "text": "Add trick phrases like \"expert mode\"",
+          "misconceptionId": "cf-prompt-engineer-myth"
+        },
+        {
+          "text": "Add more background to be thorough",
+          "misconceptionId": null
+        },
+        {
+          "text": "Repeat the request in all caps",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["prompting"],
+      "source": "Claude Fundamentals I-III content pack, section 1.15",
+      "hash": "85806fb0c86d"
+    },
+    {
+      "id": "cf-effort-is-thinking-time",
+      "module": "cf-intermediate",
+      "type": "term",
+      "difficulty": 2,
+      "criticality": 2,
+      "teach": {
+        "card": "Effort (low, medium, high and above) controls how long Claude thinks before it answers. It trades speed for depth. It doesn't change which model you're using.",
+        "why": "Mixing up effort and model leads people to max out effort on a model that's out of its depth, which costs time and usage without fixing the result."
+      },
+      "prompt": "What does raising the effort level change?",
+      "answer": "How long Claude thinks before answering",
+      "distractors": [
+        {
+          "text": "How smart the underlying model is",
+          "misconceptionId": "cf-effort-smarter-myth"
+        },
+        {
+          "text": "How long its final answer will be",
+          "misconceptionId": null
+        },
+        {
+          "text": "How creative its wording will be",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["models"],
+      "source": "Claude Fundamentals I-III content pack, section 1.17",
+      "hash": "4bc41b592210"
+    },
+    {
+      "id": "cf-choosing-a-model",
+      "module": "cf-intermediate",
+      "type": "term",
+      "difficulty": 3,
+      "criticality": 2,
+      "teach": {
+        "card": "Haiku is fastest for simple tasks, Sonnet is the everyday default, Opus handles in-depth or complex work, and Fable is the most capable but burns usage fastest (the lineup as of fall 2026). You can switch models mid-chat, up or down. The presenter's rule: if Sonnet on high isn't enough, move up a model instead of pushing effort higher.",
+        "why": "Capability comes from the model, not from extra thinking time, so harder work needs a stronger model; the real question is whether the better answer is worth the extra usage."
+      },
+      "prompt": "Your everyday model on high effort still falls short on a complex task. What's the better next move?",
+      "answer": "Move up to a more capable model",
+      "distractors": [
+        {
+          "text": "Push effort even higher",
+          "misconceptionId": "cf-effort-smarter-myth"
+        },
+        {
+          "text": "Drop to a lighter, faster model",
+          "misconceptionId": null
+        },
+        {
+          "text": "Turn on Research mode",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["models"],
+      "source": "Claude Fundamentals I-III content pack, section 1.17",
+      "hash": "56b9753b1236"
+    },
+    {
+      "id": "cf-research-vs-chat",
+      "module": "cf-intermediate",
+      "type": "term",
+      "difficulty": 1,
+      "criticality": 2,
+      "teach": {
+        "card": "Research mode spends minutes searching the web many times, reading full pages, following citations and flagging conflicts, then writes a cited report. Use it for synthesis across many sources, like competitive analysis, vendor due diligence, regulatory review or market sizing. If you already have the content, standard chat is faster.",
+        "why": "Matching the mode to the job keeps you from waiting minutes for something chat does in seconds, or getting a shallow answer to a question that needed real research."
+      },
+      "prompt": "Which job is Research mode built for?",
+      "answer": "Vendor due diligence across many sources",
+      "distractors": [
+        {
+          "text": "A quick answer to a simple question",
+          "misconceptionId": "cf-research-quick-answer-myth"
+        },
+        {
+          "text": "Rewording an email you already wrote",
+          "misconceptionId": null
+        },
+        {
+          "text": "Summarizing notes you pasted in",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["research"],
+      "source": "Claude Fundamentals I-III content pack, sections 2.1 and 2.3",
+      "hash": "f27ffc52d798"
+    },
+    {
+      "id": "cf-front-load-research",
+      "module": "cf-intermediate",
+      "type": "term",
+      "difficulty": 2,
+      "criticality": 3,
+      "teach": {
+        "card": "Claude is about to spend real time on your behalf, so front-load the prompt: what's in and out of scope, who will read it, the format, sources to favor or exclude, and a date range. Without a date range, it weighs old and new sources equally. A misunderstood brief discovered twenty minutes in is expensive.",
+        "why": "A research run can't be steered cheaply once it starts, so every detail left out becomes report sections you didn't need."
+      },
+      "prompt": "Before you start a Research mode run, what belongs in the prompt?",
+      "answer": "Scope, audience, format, sources, dates",
+      "distractors": [
+        {
+          "text": "Just the topic; it figures out the rest",
+          "misconceptionId": "cf-research-quick-answer-myth"
+        },
+        {
+          "text": "Only the format you want back",
+          "misconceptionId": null
+        },
+        {
+          "text": "A note asking it to be quick",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["research", "prompting"],
+      "source": "Claude Fundamentals I-III content pack, section 2.4",
+      "hash": "6a986dcc4fb5"
+    },
+    {
+      "id": "cf-standing-brief",
+      "module": "cf-intermediate",
+      "type": "term",
+      "difficulty": 1,
+      "criticality": 2,
+      "teach": {
+        "card": "Project instructions are the standing brief Claude reads before every conversation in the project: role, goals, company context, tone and rules. They're the most powerful part of a project. Write them like day-one training for a new employee, covering the goal, what to always do, and what to never do.",
+        "why": "Without a standing brief every chat starts from zero, and every teammate re-explains things a little differently, so results drift."
+      },
+      "prompt": "In a Claude Project, what are the project instructions?",
+      "answer": "A standing brief read before every chat",
+      "distractors": [
+        {
+          "text": "A live group chat for the whole team",
+          "misconceptionId": "cf-shared-chat-group-myth"
+        },
+        {
+          "text": "A file Claude opens only when asked",
+          "misconceptionId": null
+        },
+        {
+          "text": "A prompt that applies to one chat",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["projects"],
+      "source": "Claude Fundamentals I-III content pack, sections 2.7 and 2.8",
+      "hash": "22888dbef409"
+    },
+    {
+      "id": "cf-prompt-engineer-myth",
+      "module": "cf-intermediate",
+      "type": "misconception",
+      "difficulty": 1,
+      "criticality": 2,
+      "teach": {
+        "card": "Start in plain English and treat the first output as a draft. Most people stop at 80%, but one or two rounds of targeted feedback usually beat starting over. Over time, each round teaches you what to put in your first prompt.",
+        "why": "The belief keeps people from trying Claude at all, or makes them restart with a cleverer prompt instead of fixing the draft in front of them."
+      },
+      "belief": "You need to be a prompt engineer to get good results from Claude.",
+      "truth": "Plain English plus iteration is the real skill: improve the 80% answer instead of chasing a perfect prompt.",
+      "tags": ["prompting"],
+      "source": "Claude Fundamentals I-III content pack, sections 1.12 and 1.15",
+      "hash": "24f7302ac2e9"
+    },
+    {
+      "id": "cf-effort-smarter-myth",
+      "module": "cf-intermediate",
+      "type": "misconception",
+      "difficulty": 2,
+      "criticality": 2,
+      "teach": {
+        "card": "Effort buys Claude more time to reason, which helps on tricky problems. It can't give a lighter model abilities it doesn't have. When a task needs more capability, switch models, which you can do mid-chat.",
+        "why": "Treating effort as intelligence burns usage on long thinking that still can't reach the answer a stronger model would give."
+      },
+      "belief": "Turning the effort level up makes the model smarter.",
+      "truth": "Effort is thinking time; the model sets capability. If high effort falls short, move up a model.",
+      "tags": ["models"],
+      "source": "Claude Fundamentals I-III content pack, section 1.17",
+      "hash": "d8accb977e5b"
+    },
+    {
+      "id": "cf-research-quick-answer-myth",
+      "module": "cf-intermediate",
+      "type": "misconception",
+      "difficulty": 1,
+      "criticality": 2,
+      "teach": {
+        "card": "Research mode is built for depth: work you'd hand an intern for a morning or a junior colleague for a couple of hours. Ask it a simple question and it will take minutes and give you both sides. If you just want an answer, use standard chat.",
+        "why": "Sending quick questions to Research mode wastes time and usage and buries the answer under a hedged, many-sided report."
+      },
+      "belief": "Research mode is the best way to get a quick answer.",
+      "truth": "Use standard chat for quick answers; Research mode takes minutes, uses a lot of usage, and hedges.",
+      "tags": ["research"],
+      "source": "Claude Fundamentals I-III content pack, section 2.3",
+      "hash": "5e2e664fbaf7"
+    },
+    {
+      "id": "cf-shared-chat-group-myth",
+      "module": "cf-intermediate",
+      "type": "misconception",
+      "difficulty": 2,
+      "criticality": 1,
+      "teach": {
+        "card": "What a shared project really shares is its standing brief and its files, which is what keeps everyone's results consistent. Others can read your chats, but only as snapshots. Collaboration happens through the shared instructions, not a shared conversation.",
+        "why": "Teams that expect a group chat build their process around a feature that doesn't exist and lose work passing one chat around."
+      },
+      "belief": "A shared project chat works like a group chat with Claude.",
+      "truth": "Shared chats are read-only snapshots; colleagues can read them but can't continue them with Claude.",
+      "tags": ["projects"],
+      "source": "Claude Fundamentals I-III content pack, section 2.9",
+      "hash": "09045c596dfc"
+    },
+    {
+      "id": "cf-chat-or-research",
+      "module": "cf-intermediate",
+      "type": "category",
+      "difficulty": 2,
+      "criticality": 2,
+      "teach": {
+        "card": "Sort each job by the mode that fits. Standard chat answers in seconds when you already have the content or need a quick answer. Research mode spends minutes on topics that need synthesis across many sources.",
+        "why": "The wrong pick either wastes many minutes and a lot of usage on a simple job, or gets a shallow answer to a question that needed real digging."
+      },
+      "buckets": ["Standard chat", "Research mode"],
+      "items": [
+        {
+          "text": "Draft a reply to this customer email",
+          "bucket": "Standard chat"
+        },
+        {
+          "text": "Due diligence on three backup vendors",
+          "bucket": "Research mode"
+        },
+        {
+          "text": "Reformat this table as bullet points",
+          "bucket": "Standard chat"
+        },
+        {
+          "text": "Summarize the meeting notes I pasted",
+          "bucket": "Standard chat"
+        },
+        {
+          "text": "Industry trends for the next two years",
+          "bucket": "Research mode"
+        },
+        {
+          "text": "New compliance rules in our state",
+          "bucket": "Research mode"
+        },
+        {
+          "text": "Market sizing for a new service line",
+          "bucket": "Research mode"
+        },
+        {
+          "text": "Competitor pricing and recent launches",
+          "bucket": "Research mode"
+        },
+        {
+          "text": "Rewrite this paragraph to sound warmer",
+          "bucket": "Standard chat"
+        },
+        {
+          "text": "Look up one current fact, like a vendor's support hours",
+          "bucket": "Standard chat",
+          "borderline": true
+        },
+        {
+          "text": "An in-depth look at a debated topic",
+          "bucket": "Research mode",
+          "borderline": true
+        },
+        {
+          "text": "Explain a concept I'm learning",
+          "bucket": "Standard chat"
+        }
+      ],
+      "tags": ["research"],
+      "source": "Claude Fundamentals I-III content pack, sections 2.3 and 2.5",
+      "hash": "120d9fd35281"
+    },
+    {
+      "id": "cf-where-context-lives",
+      "module": "cf-intermediate",
+      "type": "category",
+      "difficulty": 3,
+      "criticality": 2,
+      "teach": {
+        "card": "Sort each piece of context to where it belongs. Personal preferences hold your own always-rules for every chat. A project's brief holds the team's goal and always or never rules, project files hold reference documents, and the chat itself holds today's ask.",
+        "why": "Context in the wrong place either gets re-typed every day or leaks into chats where it doesn't fit, like a personal style rule overriding a client-facing tone."
+      },
+      "buckets": ["Preferences", "Project brief", "Project file", "This chat"],
+      "items": [
+        {
+          "text": "No em dashes in anything I write",
+          "bucket": "Preferences"
+        },
+        {
+          "text": "Skip the motivational fluff",
+          "bucket": "Preferences"
+        },
+        {
+          "text": "Use the Oxford comma",
+          "bucket": "Preferences",
+          "borderline": true
+        },
+        {
+          "text": "Always stay professional with clients",
+          "bucket": "Project brief"
+        },
+        {
+          "text": "Never name competitors in replies",
+          "bucket": "Project brief"
+        },
+        {
+          "text": "Each RFP team member's role",
+          "bucket": "Project brief",
+          "borderline": true
+        },
+        {
+          "text": "Keep customer replies under 150 words",
+          "bucket": "Project brief",
+          "borderline": true
+        },
+        {
+          "text": "The current price list",
+          "bucket": "Project file"
+        },
+        {
+          "text": "Our brand guidelines PDF",
+          "bucket": "Project file"
+        },
+        {
+          "text": "The onboarding SOP",
+          "bucket": "Project file"
+        },
+        {
+          "text": "When is the final presentation due?",
+          "bucket": "This chat"
+        },
+        {
+          "text": "Summarize what changed since Friday",
+          "bucket": "This chat"
+        }
+      ],
+      "tags": ["projects", "settings"],
+      "source": "Claude Fundamentals I-III content pack, sections 1.8, 2.7 and 2.8",
+      "hash": "6d2434370ad5"
+    },
+    {
+      "id": "cf-rctco-briefing",
+      "module": "cf-intermediate",
+      "type": "sequence",
+      "difficulty": 1,
+      "criticality": 2,
+      "teach": {
+        "card": "RCTCO names the five parts of a strong brief: Role, Context, Task, Constraints, Output format. It's a checklist, not a writing order; when you write the prompt, still lead with the task. \"Write a two-page briefing on our rollout\" beats \"Help me with the rollout.\" Tone, structure and precision lines can sharpen any part of it.",
+        "why": "Each part closes a gap Claude would otherwise fill with a guess, so a missing piece shows up as the part of the answer you have to fix."
+      },
+      "prompt": "The five parts of RCTCO, in acronym order",
+      "steps": [
+        "Role: the expertise to adopt",
+        "Context: background and why you're asking",
+        "Task: an action verb and a clear deliverable",
+        "Constraints: what to avoid",
+        "Output format: how the result should look"
+      ],
+      "decoys": ["Tone: how warm it should sound"],
+      "tags": ["prompting"],
+      "source": "Claude Fundamentals I-III content pack, section 1.13",
+      "hash": "b954f7e73d54"
+    },
+    {
+      "id": "cf-reverse-prompting",
+      "module": "cf-intermediate",
+      "type": "sequence",
+      "difficulty": 2,
+      "criticality": 1,
+      "teach": {
+        "card": "After a few rounds of feedback get you a great result, ask Claude in that same chat what single prompt would have produced it. Save the prompt and reuse it next time, changing only a date range or a word. Each cycle makes your first drafts stronger.",
+        "why": "The chat that produced the result knows every correction you made, so asking there captures the whole recipe in one reusable prompt."
+      },
+      "prompt": "Reverse prompting a result you love",
+      "steps": [
+        "Iterate until you love the result",
+        "Ask what single prompt would recreate it",
+        "Save that prompt somewhere handy",
+        "Reuse it, changing only a date or a word"
+      ],
+      "decoys": ["Open a fresh chat to ask for the prompt"],
+      "tags": ["prompting"],
+      "source": "Claude Fundamentals I-III content pack, section 1.14",
+      "hash": "0ac707fa1f7a"
+    },
+    {
+      "id": "cf-research-run",
+      "module": "cf-intermediate",
+      "type": "sequence",
+      "difficulty": 3,
+      "criticality": 2,
+      "teach": {
+        "card": "A Research run has three stages: plan, execute, synthesize. Your front-loaded prompt shapes the plan, Claude then searches iteratively and reads full pages, and the report flags conflicts and cites every source. You can go do something else while it runs.",
+        "why": "Every stage builds on your prompt, so a gap at the start costs the most, and the citations at the end only help if someone actually checks them."
+      },
+      "prompt": "A Research mode run, start to finish",
+      "steps": [
+        "Front-load scope, audience, format, dates",
+        "Answer any clarifying questions",
+        "Claude builds a research plan",
+        "Claude searches and reads full pages",
+        "Claude writes a cited report",
+        "You verify the sources that matter"
+      ],
+      "decoys": ["Schedule it to rerun every Monday", "Ask it for a quick yes or no"],
+      "tags": ["research"],
+      "source": "Claude Fundamentals I-III content pack, sections 2.2 and 2.4",
+      "hash": "044f02a2fe1c"
+    },
+    {
+      "id": "cf-chat-bertram-research-detour",
+      "module": "cf-intermediate",
+      "type": "scenario",
+      "difficulty": 2,
+      "criticality": 2,
+      "teach": {
+        "card": "Most bad research runs trace back to a one-line prompt. Acknowledge the lost time, rebuild the brief with scope, audience, format and dates, and save Research mode for questions that deserve the wait.",
+        "why": "A colleague who blames the tool will stop using it, while one who learns to front-load gets reports worth the wait."
+      },
+      "setup": "Bertram, a sales coordinator, pings you after his first Research mode run. He typed one line about cyber insurance, waited twenty-five minutes, and got a report that's half about things he doesn't need.",
+      "persona": {
+        "name": "Bertram",
+        "mood": 45,
+        "style": "rushed and skeptical of AI, wants answers fast"
+      },
+      "beats": [
+        {
+          "id": "the-miss",
+          "prompt": "Bertram: \"I waited twenty-five minutes for a report that's half stuff I don't care about. What a waste.\"",
+          "choices": [
+            {
+              "text": "That's a painful wait for a miss. Research mode spends real time on your behalf, so it needs the full brief up front. What did you actually need, and who's going to read it?",
+              "quality": "good",
+              "moodDelta": 15,
+              "reply": "Renewal requirements for cyber insurance. It's for the account managers."
+            },
+            {
+              "text": "Research mode is just slow and wordy; that's how it's built. I'd skip it altogether and stick to regular chat, which is faster and gives you basically the same answers anyway.",
+              "quality": "bad",
+              "moodDelta": -15,
+              "reply": "Regular chat gave me a vague answer. That's why I tried this."
+            },
+            {
+              "text": "Yeah, it does take a while to run, unfortunately. Sometimes the report comes back with extra material, but you can usually skim past the parts that don't apply to you this time.",
+              "quality": "neutral",
+              "moodDelta": 0,
+              "reply": "So I just eat the twenty-five minutes?"
+            }
+          ]
+        },
+        {
+          "id": "rebuild-prompt",
+          "prompt": "Bertram: \"So what should I have typed?\"",
+          "choices": [
+            {
+              "text": "Lead with the topic and scope, and say what's out of scope. Then who it's for, the format you want, like bullet highlights and a table, and a date range. Ask it to cite every source.",
+              "quality": "good",
+              "moodDelta": 15,
+              "reply": "Okay, that's a lot more specific than one line."
+            },
+            {
+              "text": "Just type the same request again. Research mode searches different sources on every run, so the second report usually lands much closer to what you wanted without you changing anything.",
+              "quality": "bad",
+              "moodDelta": -15,
+              "reply": "Different isn't the same as useful."
+            },
+            {
+              "text": "Add more detail, I guess. The more you tell it, the better it usually does, so write out everything you can think of about the topic and see if that helps next time.",
+              "quality": "neutral",
+              "moodDelta": -5,
+              "reply": "Detail about what, though?"
+            }
+          ]
+        },
+        {
+          "id": "schedule-it",
+          "prompt": "Bertram: \"Could I just schedule it to run every Monday so I'm always current?\"",
+          "choices": [
+            {
+              "text": "I wouldn't. A scheduled Research run mostly repeats the same report and burns usage. Run it when something actually changes, and use standard chat for quick follow-ups.",
+              "quality": "good",
+              "moodDelta": 15,
+              "reply": "Fair. Save the big runs for big questions."
+            },
+            {
+              "text": "Sure, set it for every Monday morning. More research is always better, and a weekly run means you'll never miss anything, even in the weeks when nothing has changed at all.",
+              "quality": "bad",
+              "moodDelta": -15,
+              "reply": "Won't that just be the same report every week, though?"
+            },
+            {
+              "text": "I'm not sure that's the best use of it, honestly. It might work, but I'd have to look into how scheduling works with Research mode before I could really recommend it to you.",
+              "quality": "neutral",
+              "moodDelta": 0,
+              "reply": "Why not? Staying current sounds good."
+            }
+          ]
+        },
+        {
+          "id": "quick-answers",
+          "prompt": "Bertram: \"And when I just need a quick answer?\"",
+          "choices": [
+            {
+              "text": "Standard chat. It answers in seconds. Research mode hedges and gives you both sides, which is great for a deep dive and annoying for a yes or no.",
+              "quality": "good",
+              "moodDelta": 10,
+              "reply": "Chat for answers, Research for deep dives. Got it."
+            },
+            {
+              "text": "Still use Research mode. It checks more sources, so even a quick answer comes back more accurate, and the extra wait is worth it for anything you're going to act on.",
+              "quality": "bad",
+              "moodDelta": -15,
+              "reply": "Twenty-five minutes for every question? No thanks."
+            },
+            {
+              "text": "Chat, usually, though it really depends on the question. For most things either one works fine, so just use whichever feels faster to you at the time.",
+              "quality": "neutral",
+              "moodDelta": 0,
+              "reply": "Usually? When wouldn't it be?"
+            }
+          ]
+        }
+      ],
+      "rubric": {
+        "goal": "Help a colleague front-load a Research mode prompt and pick the right mode for the job",
+        "must": [
+          "name specific details to front-load, such as scope, audience, format or date range",
+          "steer quick questions and recurring runs away from Research mode"
+        ],
+        "should": ["acknowledge the wasted time", "mention stating what is out of scope"],
+        "never": [
+          "say Research mode output is always accurate",
+          "recommend scheduling Research mode to run regularly"
+        ]
+      },
+      "tags": ["research", "prompting"],
+      "source": "Claude Fundamentals I-III content pack, sections 2.3 and 2.4",
+      "hash": "d72ad369ace1"
+    },
+    {
+      "id": "cf-chat-rosalind-team-project",
+      "module": "cf-intermediate",
+      "type": "scenario",
+      "difficulty": 3,
+      "criticality": 2,
+      "teach": {
+        "card": "When a team repeats the same context every day, the answer is a shared Project: a standing brief, reference files uploaded once, and consistent output for everyone. Set expectations about what sharing does and doesn't do.",
+        "why": "A well-built project replaces a daily chore for the whole team, but only if people know shared chats are snapshots and not a group conversation."
+      },
+      "setup": "Rosalind leads a customer support team of eight. Every morning she pastes the same FAQ and tone rules into a new chat, and her team's replies still sound different from person to person.",
+      "persona": {
+        "name": "Rosalind",
+        "mood": 45,
+        "style": "organized but worn down by repetition, wants her team consistent"
+      },
+      "beats": [
+        {
+          "id": "daily-paste",
+          "prompt": "Rosalind: \"Every morning I paste our FAQ and tone rules into a new chat, and the team's replies still all sound different.\"",
+          "choices": [
+            {
+              "text": "That's exactly what Projects are for. Put the rules in the project instructions and upload the FAQ once. Everyone on the team gets the same brief before every chat.",
+              "quality": "good",
+              "moodDelta": 15,
+              "reply": "Once? Not every morning? I'm listening."
+            },
+            {
+              "text": "Have everyone paste the FAQ and the tone rules into their own personal preferences in Settings. Then every chat each person starts begins with the rules, and the replies will all match.",
+              "quality": "bad",
+              "moodDelta": -15,
+              "reply": "So eight people keep eight copies in sync? That's worse."
+            },
+            {
+              "text": "You could save the rules as a shared doc and have everyone attach it at the start of each chat, so at least the whole team is working from the same version every morning.",
+              "quality": "neutral",
+              "moodDelta": -5,
+              "reply": "That's still a daily chore, though. Isn't there something that sticks?"
+            }
+          ]
+        },
+        {
+          "id": "instructions",
+          "prompt": "Rosalind: \"Okay. What do I actually put in the instructions?\"",
+          "choices": [
+            {
+              "text": "Write it like day-one training for a new hire: what the project is for, what Claude should always do, and what it should never do. For example, always lead with warmth; never name competitors.",
+              "quality": "good",
+              "moodDelta": 15,
+              "reply": "Goal, always, never. I can write that this afternoon."
+            },
+            {
+              "text": "Keep it short: write 'be consistent and professional' and let Claude work out the rest. It already knows how a help desk should sound, so long instructions just get in the way.",
+              "quality": "bad",
+              "moodDelta": -15,
+              "reply": "That's basically what I've been doing."
+            },
+            {
+              "text": "Whatever rules you've been pasting each morning should be fine. Copy those in as they are, and you can always come back and adjust them later if something feels off.",
+              "quality": "neutral",
+              "moodDelta": 0,
+              "reply": "Some of those are pretty messy, honestly."
+            }
+          ]
+        },
+        {
+          "id": "faq-changes",
+          "prompt": "Rosalind: \"Our FAQ changes every quarter. Do I re-upload it to every chat?\"",
+          "choices": [
+            {
+              "text": "No. Update the file in the project once, and every chat uses the latest version from then on.",
+              "quality": "good",
+              "moodDelta": 15,
+              "reply": "That alone saves me an hour a week."
+            },
+            {
+              "text": "Yes. Each chat keeps its own copy of the files, so re-upload the new FAQ into every chat that uses it.",
+              "quality": "bad",
+              "moodDelta": -20,
+              "reply": "Then what's the point of a project?"
+            },
+            {
+              "text": "Maybe not every chat. Replacing the file in the project might be enough, but I'm honestly not sure.",
+              "quality": "neutral",
+              "moodDelta": -5,
+              "reply": "Can you find out? I'd rather not guess with eight people."
+            }
+          ]
+        },
+        {
+          "id": "group-chat",
+          "prompt": "Rosalind: \"Can the whole team jump into one project chat with Claude together?\"",
+          "choices": [
+            {
+              "text": "Not live. Shared chats are snapshots: the team can read each other's chats, but each person works in their own. The shared instructions and files are what keep everyone consistent.",
+              "quality": "good",
+              "moodDelta": 15,
+              "reply": "Separate chats, same brief. That works."
+            },
+            {
+              "text": "Yes, it works just like a group chat. Everyone can join the same conversation at once and type to Claude together, and it keeps track of who said what for each person on your team.",
+              "quality": "bad",
+              "moodDelta": -15,
+              "reply": "Then why can't anyone reply in mine?"
+            },
+            {
+              "text": "I'm honestly not sure that works. Try it with a couple of people and see what happens; if it doesn't, you could always share screenshots of the answers instead.",
+              "quality": "neutral",
+              "moodDelta": 0,
+              "reply": "I'd rather know before I tell eight people."
+            }
+          ]
+        }
+      ],
+      "rubric": {
+        "goal": "Set up a team lead with a shared Project so the whole team gets consistent output",
+        "must": [
+          "recommend a Project with instructions and uploaded files",
+          "explain that a file is uploaded once and stays current for every chat"
+        ],
+        "should": [
+          "describe instructions as the goal plus always and never rules",
+          "explain that shared chats are read-only snapshots"
+        ],
+        "never": [
+          "advise re-uploading files to every chat",
+          "claim a shared chat works like a live group chat"
+        ]
+      },
+      "tags": ["projects"],
+      "source": "Claude Fundamentals I-III content pack, sections 2.6 to 2.9",
+      "hash": "d6461d81663c"
+    },
+    {
+      "id": "cf-what-connectors-add",
+      "module": "cf-advanced",
+      "type": "term",
+      "difficulty": 1,
+      "criticality": 2,
+      "teach": {
+        "card": "Without connectors Claude knows only what you paste in, what it learned in training, and what it can find quickly on the web. With connectors it can search your email, read your calendar and pull documents from SharePoint without you copying anything. Connect once and they're available across Chat, Cowork and Code.",
+        "why": "Copying and pasting context is slow and easy to get wrong, and connectors let Claude pull it from where it already lives, within your access."
+      },
+      "prompt": "What do connectors add to Claude?",
+      "answer": "Eyes on your systems, not just the chat",
+      "distractors": [
+        {
+          "text": "Access to every file in the company",
+          "misconceptionId": "cf-sees-all-data-myth"
+        },
+        {
+          "text": "A smarter model for harder tasks",
+          "misconceptionId": null
+        },
+        {
+          "text": "Faster answers in standard chat",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["connectors"],
+      "source": "Claude Fundamentals I-III content pack, sections 2.11 and 3.7",
+      "hash": "fccd27b2194c"
+    },
+    {
+      "id": "cf-security-through-obscurity",
+      "module": "cf-advanced",
+      "type": "term",
+      "difficulty": 2,
+      "criticality": 3,
+      "teach": {
+        "card": "Claude finds everything you can access, including things you didn't know you could see. Security through obscurity no longer works: an overshared folder nobody stumbled on before will now turn up in summaries. If you own data, check who has access to it.",
+        "why": "Oversharing that was harmless while it stayed hidden becomes a real exposure once a tool can search all of it on a user's behalf."
+      },
+      "prompt": "Why does Endsight recommend a permissions cleanup before rolling out Claude?",
+      "answer": "Claude surfaces anything a user can access",
+      "distractors": [
+        {
+          "text": "Claude can read every file in the tenant",
+          "misconceptionId": "cf-sees-all-data-myth"
+        },
+        {
+          "text": "Claude changes file permissions itself",
+          "misconceptionId": null
+        },
+        {
+          "text": "Connectors need admin rights per user",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["connectors", "security"],
+      "source": "Claude Fundamentals I-III content pack, section 1.20 and Endsight notes for Module 1",
+      "hash": "c0dbbb279d9f"
+    },
+    {
+      "id": "cf-help-vs-do",
+      "module": "cf-advanced",
+      "type": "term",
+      "difficulty": 1,
+      "criticality": 2,
+      "teach": {
+        "card": "In Chat, Claude helps: you paste context in, apply the output yourself, and it tells you how. In Cowork, Claude does: it reads your files directly, works through multi-step tasks, and delivers finished work to your folder. It's Claude Code power for everyone, no terminal required.",
+        "why": "Picking the right mode decides whether you walk away with instructions to carry out or with a finished deliverable waiting in a folder."
+      },
+      "prompt": "What's the difference between Chat and Cowork?",
+      "answer": "Chat tells you how; Cowork does it",
+      "distractors": [
+        {
+          "text": "Cowork needs every step written out",
+          "misconceptionId": "cf-spell-every-step-myth"
+        },
+        {
+          "text": "Cowork can reach any file on your PC",
+          "misconceptionId": "cf-cowork-free-rein-myth"
+        },
+        {
+          "text": "Chat is smarter; Cowork is faster",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["cowork"],
+      "source": "Claude Fundamentals I-III content pack, section 3.3",
+      "hash": "4af5a353f6e9"
+    },
+    {
+      "id": "cf-folder-containment",
+      "module": "cf-advanced",
+      "type": "term",
+      "difficulty": 2,
+      "criticality": 3,
+      "teach": {
+        "card": "Inside the folder you pick and its subfolders, Cowork can create, modify, rename and delete files without asking at every step. If a prompt is ambiguous or Claude misreads it, the damage stays in that folder instead of reaching your whole drive. Grant only the folders and connectors the task needs.",
+        "why": "Cowork acts on real files, so the folder boundary is what turns a misread instruction into a small cleanup instead of a disaster."
+      },
+      "prompt": "Why does Cowork work inside a folder you choose?",
+      "answer": "So a mistake stays inside that folder",
+      "distractors": [
+        {
+          "text": "So it can then reach your whole drive",
+          "misconceptionId": "cf-cowork-free-rein-myth"
+        },
+        {
+          "text": "Because it can't open cloud files",
+          "misconceptionId": null
+        },
+        {
+          "text": "So it asks before every single edit",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["cowork", "safety"],
+      "source": "Claude Fundamentals I-III content pack, sections 3.4 and 3.9",
+      "hash": "0d3e02ae41a9"
+    },
+    {
+      "id": "cf-describe-the-outcome",
+      "module": "cf-advanced",
+      "type": "term",
+      "difficulty": 2,
+      "criticality": 2,
+      "teach": {
+        "card": "Describe the deliverable, where it should go, and anything to avoid, such as a connector that's bad at the job. Claude then reads your files, checks which connectors it has, and builds a step-by-step plan. It shows you the plan before acting, so you approve or redirect it.",
+        "why": "Claude plans better from a clear goal than from a half-remembered procedure, and reviewing its plan is where you catch a misread before any file changes."
+      },
+      "prompt": "Starting a Cowork task, what should you be most specific about?",
+      "answer": "The outcome you want delivered",
+      "distractors": [
+        {
+          "text": "Every step, in the exact order",
+          "misconceptionId": "cf-spell-every-step-myth"
+        },
+        {
+          "text": "Which commands it should run",
+          "misconceptionId": null
+        },
+        {
+          "text": "How many minutes it may take",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["cowork"],
+      "source": "Claude Fundamentals I-III content pack, section 3.5",
+      "hash": "f25abe2b20e1"
+    },
+    {
+      "id": "cf-watch-the-first-run",
+      "module": "cf-advanced",
+      "type": "term",
+      "difficulty": 3,
+      "criticality": 3,
+      "teach": {
+        "card": "Cowork completes tasks, but consequential decisions stay with you. For anything you'll repeat, watch the first run, work on copies of important files, and stop it the moment it heads the wrong way. Once a run goes well, you can ask Claude to write the scheduled-task instructions.",
+        "why": "The first run is where misread instructions show up, and catching one on copies costs nothing while catching it on the originals can cost the files."
+      },
+      "prompt": "Cowork will run a task you'll repeat weekly on important files. What's the safest first run?",
+      "answer": "Watch it run, working on copies",
+      "distractors": [
+        {
+          "text": "Write every step so it can't slip",
+          "misconceptionId": "cf-spell-every-step-myth"
+        },
+        {
+          "text": "Let it run unattended on originals",
+          "misconceptionId": null
+        },
+        {
+          "text": "Schedule it weekly from day one",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["cowork", "safety"],
+      "source": "Claude Fundamentals I-III content pack, sections 3.8 and 3.9",
+      "hash": "7db1cf2ad264"
+    },
+    {
+      "id": "cf-skill-two-parts",
+      "module": "cf-advanced",
+      "type": "term",
+      "difficulty": 2,
+      "criticality": 2,
+      "teach": {
+        "card": "Every skill has two parts. The frontmatter is a short description that tells Claude when to use the skill, and Claude loads every skill's description at the start. The SKILL.md instructions, plus any scripts or templates, load only when the skill is actually used.",
+        "why": "Because only descriptions are always loaded, the description decides whether a skill fires and the instructions decide how well it runs."
+      },
+      "prompt": "Which part of a skill does Claude load at the start of every chat?",
+      "answer": "Its short description (frontmatter)",
+      "distractors": [
+        {
+          "text": "The full SKILL.md instructions",
+          "misconceptionId": "cf-skills-all-loaded-myth"
+        },
+        {
+          "text": "Every script and template it holds",
+          "misconceptionId": null
+        },
+        {
+          "text": "Nothing until you type its name",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["skills"],
+      "source": "Claude Fundamentals I-III content pack, section 3.11",
+      "hash": "b848562956d7"
+    },
+    {
+      "id": "cf-skill-description-tradeoff",
+      "module": "cf-advanced",
+      "type": "term",
+      "difficulty": 3,
+      "criticality": 2,
+      "teach": {
+        "card": "Claude decides whether to auto-invoke a skill by matching your request against its description. Too broad, and the skill loads when it isn't relevant, wasting context. Too narrow, and it may never fire, so you end up calling it with /skill-name.",
+        "why": "The description is the only part Claude reads before deciding, so tuning it is how a skill shows up at the right moments and stays out of the way otherwise."
+      },
+      "prompt": "Your skill almost never runs unless you type its slash command. What's the likely cause?",
+      "answer": "Its description is written too narrowly",
+      "distractors": [
+        {
+          "text": "Its instructions load in every chat",
+          "misconceptionId": "cf-skills-all-loaded-myth"
+        },
+        {
+          "text": "Its SKILL.md has too many steps",
+          "misconceptionId": null
+        },
+        {
+          "text": "It's an organization-wide skill",
+          "misconceptionId": null
+        }
+      ],
+      "tags": ["skills"],
+      "source": "Claude Fundamentals I-III content pack, section 3.11",
+      "hash": "b98dc5750052"
+    },
+    {
+      "id": "cf-sees-all-data-myth",
+      "module": "cf-advanced",
+      "type": "misconception",
+      "difficulty": 1,
+      "criticality": 3,
+      "teach": {
+        "card": "With the Microsoft 365 connector, Claude searches SharePoint, Outlook, OneDrive and Teams as you. It can't see past your permissions. Inside them it will surface everything, including files you didn't know you could open.",
+        "why": "Overestimating what Claude sees scares people off it, while underestimating it lets an overshared folder end up in someone's summary."
+      },
+      "belief": "Claude can see all of the company's data.",
+      "truth": "Claude sees only what you can access, but it will find all of that, so check who can see what you own.",
+      "tags": ["connectors", "security"],
+      "source": "Claude Fundamentals I-III content pack, section 1.20",
+      "hash": "3e392fc1093b"
+    },
+    {
+      "id": "cf-cowork-free-rein-myth",
+      "module": "cf-advanced",
+      "type": "misconception",
+      "difficulty": 1,
+      "criticality": 3,
+      "teach": {
+        "card": "You choose the folders and connectors Cowork can use, and nothing else is visible to it. Within that folder it moves quickly without asking at every step. Speed inside and a hard boundary outside is the design.",
+        "why": "Believing Cowork can touch everything either scares people away from it or leads them to grant a whole drive when one folder would do."
+      },
+      "belief": "Cowork has free rein over everything on my computer.",
+      "truth": "Cowork works only inside the folders and connectors you grant, so mistakes stay contained.",
+      "tags": ["cowork", "safety"],
+      "source": "Claude Fundamentals I-III content pack, sections 3.4 and 3.9",
+      "hash": "9586a5f20def"
+    },
+    {
+      "id": "cf-spell-every-step-myth",
+      "module": "cf-advanced",
+      "type": "misconception",
+      "difficulty": 2,
+      "criticality": 2,
+      "teach": {
+        "card": "Cowork's task loop is Describe, Plan, Execute, Steer, Deliver. You handle the describing and steering; Claude does the planning, often after asking clarifying questions. Give all your requirements up front, then let the plan carry the step-by-step work.",
+        "why": "Dictating steps turns Cowork back into Chat with extra effort, and you lose the plan review where a misread gets caught."
+      },
+      "belief": "You have to spell out every step for Cowork to get it right.",
+      "truth": "Describe the outcome; Claude builds a plan and shows it to you before it acts.",
+      "tags": ["cowork"],
+      "source": "Claude Fundamentals I-III content pack, section 3.5",
+      "hash": "2f8d9d24dd54"
+    },
+    {
+      "id": "cf-skills-all-loaded-myth",
+      "module": "cf-advanced",
+      "type": "misconception",
+      "difficulty": 2,
+      "criticality": 2,
+      "teach": {
+        "card": "Skills are designed to stay out of the way until they're needed. Descriptions are small and always present; full instructions and reference files load on demand. That's why a skill that grows too big can move rarely used sections into separate reference files.",
+        "why": "People who think skills crowd every chat avoid installing useful ones, or cram unrelated workflows into one oversized skill."
+      },
+      "belief": "Every skill's full instructions get loaded into every chat.",
+      "truth": "Only each skill's short description loads up front; the full SKILL.md loads when the skill is used.",
+      "tags": ["skills"],
+      "source": "Claude Fundamentals I-III content pack, sections 3.11 and 3.12",
+      "hash": "4c8d8f062300"
+    },
+    {
+      "id": "cf-tool-for-the-job",
+      "module": "cf-advanced",
+      "type": "category",
+      "difficulty": 2,
+      "criticality": 2,
+      "teach": {
+        "card": "Sort each job to the tool built for it. Words first: the Office add-ins and Cowork work inside your real files and templates. Visuals first: Claude Design gives you a canvas to click, comment on and tweak. Claude in Chrome works with the web page you're on.",
+        "why": "Each tool works where the content lives, so the right pick saves rebuilding work in the wrong place, like redrawing slides your template already defines."
+      },
+      "buckets": ["Claude Design", "Cowork", "Office add-in", "Claude in Chrome"],
+      "items": [
+        {
+          "text": "A new product label you can click and tweak",
+          "bucket": "Claude Design"
+        },
+        {
+          "text": "Rename 40 video files from a spreadsheet index",
+          "bucket": "Cowork"
+        },
+        {
+          "text": "Redline a contract with tracked changes",
+          "bucket": "Office add-in"
+        },
+        {
+          "text": "Slides that match the company template",
+          "bucket": "Office add-in",
+          "borderline": true
+        },
+        {
+          "text": "Pull prices from a vendor's public web page",
+          "bucket": "Claude in Chrome"
+        },
+        {
+          "text": "Marketing mockups for a new sub-brand",
+          "bucket": "Claude Design"
+        },
+        {
+          "text": "Turn a folder of receipt photos into a spreadsheet",
+          "bucket": "Cowork"
+        },
+        {
+          "text": "Explain a formula in a multi-tab workbook",
+          "bucket": "Office add-in"
+        },
+        {
+          "text": "Summarize the public page you're reading",
+          "bucket": "Claude in Chrome"
+        },
+        {
+          "text": "One visual slide that tells a story",
+          "bucket": "Claude Design",
+          "borderline": true
+        },
+        {
+          "text": "Sort a messy shared drive folder",
+          "bucket": "Cowork"
+        },
+        {
+          "text": "Draft a meeting invite in Outlook",
+          "bucket": "Office add-in"
+        }
+      ],
+      "tags": ["design", "cowork", "connectors"],
+      "source": "Claude Fundamentals I-III content pack, sections 2.12, 2.13, 3.2 and 3.6",
+      "hash": "9f6b633f1c6b"
+    },
+    {
+      "id": "cf-advanced-fact-or-myth",
+      "module": "cf-advanced",
+      "type": "category",
+      "difficulty": 3,
+      "criticality": 2,
+      "teach": {
+        "card": "Sort each statement about Chrome, Office, Cowork and Skills as fact or myth. Watch the defaults: organization skills start on, shared skills start off, and auto-approve still asks for some actions. Several of these flip on a single word, so read closely.",
+        "why": "These details decide whether a rollout is safe and whether a skill actually runs, and each myth sounds reasonable until it causes a problem."
+      },
+      "buckets": ["Fact", "Myth"],
+      "items": [
+        {
+          "text": "Claude in Chrome is safe to leave open to all sites",
+          "bucket": "Myth"
+        },
+        {
+          "text": "Claude for PowerPoint follows your slide master",
+          "bucket": "Fact"
+        },
+        {
+          "text": "Auto-approve means you're never asked again",
+          "bucket": "Myth"
+        },
+        {
+          "text": "Organization skills are on by default",
+          "bucket": "Fact"
+        },
+        {
+          "text": "Skills a colleague shares are on by default",
+          "bucket": "Myth"
+        },
+        {
+          "text": "Dispatch can work with files on your phone",
+          "bucket": "Myth"
+        },
+        {
+          "text": "A skill makes every output identical",
+          "bucket": "Myth",
+          "borderline": true
+        },
+        {
+          "text": "One skill works across Chat, Cowork and Code",
+          "bucket": "Fact"
+        },
+        {
+          "text": "Cowork can only act in systems it has a connector for",
+          "bucket": "Fact",
+          "borderline": true
+        },
+        {
+          "text": "Local-file tasks run while your PC sleeps",
+          "bucket": "Myth"
+        },
+        {
+          "text": "Claude Design can't make photorealistic images",
+          "bucket": "Fact"
+        },
+        {
+          "text": "Skill sharing is limited to the Endsight domain",
+          "bucket": "Fact"
+        }
+      ],
+      "tags": ["skills", "cowork", "safety"],
+      "source": "Claude Fundamentals I-III content pack, sections 2.12, 2.13, 3.6, 3.8, 3.11 and 3.13",
+      "hash": "61e4ff28ac4b"
+    },
+    {
+      "id": "cf-cowork-task-loop",
+      "module": "cf-advanced",
+      "type": "sequence",
+      "difficulty": 2,
+      "criticality": 2,
+      "teach": {
+        "card": "Every Cowork task runs the same loop: Describe, Plan, Execute, Steer, Deliver. You can watch in real time or walk away, and you can stop or redirect at any step. You come back to a finished deliverable in your folder.",
+        "why": "Knowing where you have control, at the plan and while it runs, is what lets you hand off real work without losing oversight."
+      },
+      "prompt": "The Cowork task loop",
+      "steps": [
+        "Describe the outcome you want",
+        "Claude plans and shows you the steps",
+        "Claude executes, working on your files",
+        "You steer: stop, redirect or carry on",
+        "Claude delivers to your folder"
+      ],
+      "decoys": ["Claude emails the result to your team"],
+      "tags": ["cowork"],
+      "source": "Claude Fundamentals I-III content pack, section 3.5",
+      "hash": "2b1fbf75f526"
+    },
+    {
+      "id": "cf-build-a-skill",
+      "module": "cf-advanced",
+      "type": "sequence",
+      "difficulty": 3,
+      "criticality": 2,
+      "teach": {
+        "card": "Re-explaining the same workflow is a skill waiting to be written. Check with colleagues first, then let Skill Creator ask about triggers, edge cases and reference files before it generates the skill. When Claude gets it wrong later, fix the skill so it's right next time.",
+        "why": "Skipping the colleague check duplicates work, and skipping the fix-it habit leaves a skill repeating the same mistake for everyone who uses it."
+      },
+      "prompt": "Turning a repeated workflow into a skill",
+      "steps": [
+        "Notice you keep re-explaining a workflow",
+        "Ask colleagues if a skill already exists",
+        "Ask Skill Creator to build it",
+        "Answer its questions on triggers and edge cases",
+        "Review the skill card and save it",
+        "Fix the skill when Claude gets it wrong"
+      ],
+      "decoys": ["Paste the steps into every new chat", "Share it outside Endsight as-is"],
+      "tags": ["skills"],
+      "source": "Claude Fundamentals I-III content pack, sections 3.12 and 3.16 and Endsight notes for Module 3",
+      "hash": "56ef2fd244da"
+    },
+    {
+      "id": "cf-chat-ignatius-cowork-cleanup",
+      "module": "cf-advanced",
+      "type": "scenario",
+      "difficulty": 3,
+      "criticality": 3,
+      "teach": {
+        "card": "Enthusiasm for Cowork is good; unattended access to a whole drive isn't. Start with one folder or a copy, describe the outcome, settle the plan's questions, and watch the first run before you schedule it.",
+        "why": "The fastest way to lose trust in an agent is a big unattended mistake, and containment plus a watched first run prevents exactly that."
+      },
+      "setup": "Ignatius, an operations coordinator, just got Cowork and wants it to clean up the team's entire shared drive overnight, unattended.",
+      "persona": {
+        "name": "Ignatius",
+        "mood": 55,
+        "style": "eager, wants to automate everything at once, impatient with caution"
+      },
+      "beats": [
+        {
+          "id": "whole-drive",
+          "prompt": "Ignatius: \"I want Cowork to clean up our whole shared drive tonight. Can I point it at the top folder and go home?\"",
+          "choices": [
+            {
+              "text": "Love the idea, but start smaller. Point it at the one folder that needs it most, and use a copy the first time. The folder you choose is its boundary, so a misread stays contained.",
+              "quality": "good",
+              "moodDelta": 15,
+              "reply": "One folder first. Okay, I know exactly which one."
+            },
+            {
+              "text": "Sure, point it at the top folder and let it run overnight. Doing the whole drive in one pass is faster, and you'll come back in the morning to everything sorted, renamed and tidied up.",
+              "quality": "bad",
+              "moodDelta": -20,
+              "reply": "Wait. What happens if it renames the wrong stuff while I'm asleep?"
+            },
+            {
+              "text": "Maybe. Let me check how Cowork handles access to a whole shared drive before you try it tonight; I'll get back to you once I know what it can and can't touch.",
+              "quality": "neutral",
+              "moodDelta": 0,
+              "reply": "Okay, but I was hoping to start tonight."
+            }
+          ]
+        },
+        {
+          "id": "what-to-type",
+          "prompt": "Ignatius: \"What do I actually type? Should I list every rename rule?\"",
+          "choices": [
+            {
+              "text": "Describe the outcome: sorted by client and year, duplicates flagged, nothing deleted. Claude reads the folder, builds a plan, and shows it to you before touching anything.",
+              "quality": "good",
+              "moodDelta": 15,
+              "reply": "So I review its plan instead of writing one. Nice."
+            },
+            {
+              "text": "Yes, write out every rename rule and every step in order. If you leave anything out it'll get lost halfway, so the more detailed your instruction list, the better the cleanup will go.",
+              "quality": "bad",
+              "moodDelta": -10,
+              "reply": "That'll take longer than sorting it myself."
+            },
+            {
+              "text": "Just tell it to clean up the folder and see what it does. It's pretty good at working things out on its own, so you probably don't need to say much more than that to get started.",
+              "quality": "neutral",
+              "moodDelta": -5,
+              "reply": "Clean it up how, though? I have opinions."
+            }
+          ]
+        },
+        {
+          "id": "plan-question",
+          "prompt": "Ignatius: \"It's showing me a plan and asking how to handle files with no date. Now what?\"",
+          "choices": [
+            {
+              "text": "Answer it. That's exactly the edge case you want settled before it acts. Then watch the first run, and stop it if it heads the wrong way.",
+              "quality": "good",
+              "moodDelta": 15,
+              "reply": "Huh. It asked the question I would have forgotten."
+            },
+            {
+              "text": "Skip the questions and approve the whole plan so it runs faster. It'll make a sensible guess about the undated files, and you can fix anything odd later.",
+              "quality": "bad",
+              "moodDelta": -15,
+              "reply": "It just dumped every undated contract into a folder called misc. Great."
+            },
+            {
+              "text": "Pick whatever option comes first. It doesn't really matter much for undated files, and you can always rename them yourself later if you need to.",
+              "quality": "neutral",
+              "moodDelta": -5,
+              "reply": "It matters if nobody can find them later."
+            }
+          ]
+        },
+        {
+          "id": "every-friday",
+          "prompt": "Ignatius: \"It worked! Can I make it run every Friday?\"",
+          "choices": [
+            {
+              "text": "Yes. After a good run, ask Claude to write the scheduled-task instructions, then set the schedule and approvals. It runs while the desktop app is open and the computer is awake, so leave it on.",
+              "quality": "good",
+              "moodDelta": 15,
+              "reply": "Friday sweep it is. My desk thanks you."
+            },
+            {
+              "text": "Sure, and turn on auto-approve too so it never stops to ask you anything again. Since the first run went well, there's no need to keep reviewing what it does every Friday.",
+              "quality": "bad",
+              "moodDelta": -15,
+              "reply": "Then why did it just stop and ask me to approve something?"
+            },
+            {
+              "text": "Maybe, depending on your plan and how your account is set up. I'd have to look into whether scheduled tasks are available for you, so let me check on that and I'll follow up next week.",
+              "quality": "neutral",
+              "moodDelta": 0,
+              "reply": "Next week? I wanted it running this Friday."
+            }
+          ]
+        }
+      ],
+      "rubric": {
+        "goal": "Help an eager colleague run Cowork safely on a messy shared folder",
+        "must": [
+          "limit Cowork to one folder or a copy instead of the whole drive",
+          "say to review Claude's plan or answer its questions before it acts"
+        ],
+        "should": [
+          "describe the outcome rather than every step",
+          "recommend watching the first run before scheduling it"
+        ],
+        "never": [
+          "recommend granting access to the entire drive",
+          "say auto-approve means it will never ask for approval"
+        ]
+      },
+      "tags": ["cowork", "safety"],
+      "source": "Claude Fundamentals I-III content pack, sections 3.4, 3.5, 3.8 and 3.9",
+      "hash": "a74fb87d5ccc"
+    },
+    {
+      "id": "cf-call-tamsin-rollout",
+      "module": "cf-advanced",
+      "type": "scenario",
+      "difficulty": 3,
+      "criticality": 3,
+      "teach": {
+        "card": "Clients rolling out Claude worry about what it can see. Be precise: it sees exactly what each user can already reach, which makes old oversharing the real risk. Clean up permissions first and allow-list Chrome to trusted sites.",
+        "why": "False reassurance leaves sensitive folders exposed, and vague answers stall a rollout that a permissions review would make safe."
+      },
+      "setup": "Tamsin, office manager at Copperline Logistics, a client, calls before their Claude rollout. Staff get the Microsoft 365 connector next week, and she's worried about what it can see.",
+      "persona": {
+        "name": "Tamsin",
+        "mood": 45,
+        "style": "cautious and privacy-minded, not technical"
+      },
+      "beats": [
+        {
+          "id": "what-it-sees",
+          "prompt": "Tamsin: \"Once staff have the Microsoft 365 connector, can Claude read everyone's email and files?\"",
+          "choices": [
+            {
+              "text": "It only sees what each person already has access to. But it will find all of it, including folders people didn't know they could open. That's why we recommend a permissions cleanup before rollout.",
+              "quality": "good",
+              "moodDelta": 15,
+              "reply": "So the risk is access we already handed out. That's fixable."
+            },
+            {
+              "text": "No, Claude can't see anything sensitive through the connector; Microsoft blocks that kind of access on its own. You don't need to change anything before the rollout, so don't worry about it.",
+              "quality": "bad",
+              "moodDelta": -20,
+              "reply": "Our HR folder is open to half the office. You're sure about that?"
+            },
+            {
+              "text": "It depends on how things are set up in your tenant. Some settings can limit it, so it's hard to say for sure, but I can look into it if you want more detail later on.",
+              "quality": "neutral",
+              "moodDelta": -5,
+              "reply": "That's exactly what worries me."
+            }
+          ]
+        },
+        {
+          "id": "cleanup",
+          "prompt": "Tamsin: \"Where do we even start with a cleanup?\"",
+          "choices": [
+            {
+              "text": "Have each data owner check who can access what they own, starting with sensitive shares like HR, finance and leadership. Open-but-hidden folders stop being hidden once Claude can search them.",
+              "quality": "good",
+              "moodDelta": 15,
+              "reply": "I'll get the department heads on it this week."
+            },
+            {
+              "text": "Honestly, I'd just tell staff not to ask Claude about anything sensitive. If nobody asks about HR or finance, it won't bring those files up, so a full permissions cleanup isn't really needed.",
+              "quality": "bad",
+              "moodDelta": -15,
+              "reply": "That relies on everyone behaving. It doesn't fix anything."
+            },
+            {
+              "text": "Good question. It's a big job, so let me check with our team about how other clients have handled it, and I'll send you a starting point sometime next week.",
+              "quality": "neutral",
+              "moodDelta": -5,
+              "reply": "Okay, but rollout is next week, so sooner is better."
+            }
+          ]
+        },
+        {
+          "id": "chrome",
+          "prompt": "Tamsin: \"A few people also want Claude in Chrome. Should we turn it on for everything?\"",
+          "choices": [
+            {
+              "text": "I'd allow-list it to a short list of trusted sites, or leave it off until there's a clear need. It moves the pointer and clicks on its own, so people should keep an eye on it while it works.",
+              "quality": "good",
+              "moodDelta": 15,
+              "reply": "A short approved list. I can live with that."
+            },
+            {
+              "text": "Yes, turn it on for everything and leave it open to the whole web. That's what makes it useful, and since it works on its own, nobody needs to watch it while it runs.",
+              "quality": "bad",
+              "moodDelta": -15,
+              "reply": "The whole web, with it clicking on its own? No."
+            },
+            {
+              "text": "That's really up to you and your team. Some clients turn it on everywhere and some don't, so it depends on what you're comfortable with. Let me know what you decide and we'll set it up.",
+              "quality": "neutral",
+              "moodDelta": 0,
+              "reply": "I'm asking because I don't know."
+            }
+          ]
+        }
+      ],
+      "rubric": {
+        "goal": "Explain what Claude can reach through connectors and how to roll it out safely",
+        "must": [
+          "explain that Claude sees only what each user can access, but finds all of it",
+          "recommend a permissions review before rollout or an allow-list for Chrome"
+        ],
+        "should": [
+          "suggest starting with sensitive shares such as HR and finance",
+          "mention that Claude in Chrome acts on its own and should be watched"
+        ],
+        "never": [
+          "claim Claude cannot see sensitive data",
+          "recommend leaving Claude in Chrome open to every site"
+        ]
+      },
+      "tags": ["connectors", "security", "phone"],
+      "source": "Claude Fundamentals I-III content pack, sections 1.20 and 2.12 and Endsight notes for Modules 1 and 2",
+      "hash": "0147960d7bf1"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "name": "endsight-arcade-codex",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A locally playable reimagining of Endsight's learning arcade",
+  "scripts": { "build": "node build.cjs", "test": "node --test *.test.cjs", "start": "node server.cjs" }
+}
